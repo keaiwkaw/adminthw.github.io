@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="浏览器," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="浏览器素养篇用户界面：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浏览器素养篇">
+<meta property="og:url" content="http://example.com/2021/01/24/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%B4%A0%E5%85%BB%E7%AF%87/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="浏览器素养篇用户界面：">
+<meta property="og:locale">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2020102818481194.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzUzNTAw,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20201028184907501.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzUzNTAw,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20201028184920648.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzUzNTAw,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="article:published_time" content="2021-01-24T13:02:58.299Z">
+<meta property="article:modified_time" content="2021-01-24T13:07:20.092Z">
+<meta property="article:author" content="甜小仙儿">
+<meta property="article:tag" content="浏览器">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/2020102818481194.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzUzNTAw,size_16,color_FFFFFF,t_70#pic_center">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://example.com/2021/01/24/浏览器素养篇/"/>
+
+
+
+
+
+  <title>浏览器素养篇 | Hexo</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2b72124a8de95be5cf54e172ebae9fae";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">甜小仙儿的栖息地</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/24/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%B4%A0%E5%85%BB%E7%AF%87/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">浏览器素养篇</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-24T21:02:58+08:00">
+                2021-01-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="浏览器素养篇"><a href="#浏览器素养篇" class="headerlink" title="浏览器素养篇"></a>浏览器素养篇</h3><p>用户界面：<img src="https://img-blog.csdnimg.cn/2020102818481194.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzUzNTAw,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<a id="more"></a>
+
+<p>浏览器引擎：包含数据持久层——存放cookie等数据</p>
+<p>渲染引擎：包含JS解析器，网络模块。渲染引擎通常也被称为内核</p>
+<p>各浏览器内核：</p>
+<table>
+<thead>
+<tr>
+<th>浏览器名称</th>
+<th>内核</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>IE</td>
+<td>Trident</td>
+</tr>
+<tr>
+<td>Firefox</td>
+<td>Gecko</td>
+</tr>
+<tr>
+<td>Safari</td>
+<td>Webkit</td>
+</tr>
+<tr>
+<td>Chrome</td>
+<td>Blink</td>
+</tr>
+<tr>
+<td>Opera</td>
+<td>Blink</td>
+</tr>
+<tr>
+<td>Edge</td>
+<td>Blink</td>
+</tr>
+</tbody></table>
+<p>注：其中Blink内核是基于Webkit内核的。</p>
+<p>在了解浏览器的工作原理之前，有必要知道进程和线程之间的关系和区别，</p>
+<p>进程：是操作系统进行资源分配和调度的基本单元，可以申请和拥有计算机资源，进程是程序的基本执行实体</p>
+<p>线程：操作系统能够进行运算和调度的最小单位，一个进程可以并发多个线程，每个线程并发执行不同的任务</p>
+<p>进程之间传递信息通过通信管道IPC传递，同一进程下的线程可以共享数据</p>
+<p>多进程的浏览器结构</p>
+<p>浏览器进程：负责除标签页外的用户界面（前进后退，地址栏，书签）与浏览器的其他进程的协调工作</p>
+<p>网络进程：负责发送接收网络请求</p>
+<p>GPU进程：浏览器界面的渲染</p>
+<p>插件进程：控制网站中所使用的插件，例如：flash插件（并发你所安装的拓展）</p>
+<p>渲染器进程：控制tab下的所有内容的渲染</p>
+<p>一般在默认情况下浏览器会为每个标签页都创建以上所有的进程，这和你安装浏览器所选择方式有关。</p>
+<p>拿chrome来说吧：</p>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>process-per-site-instance</td>
+<td>不同站点同一站点的不同页面都会创建新的进程</td>
+</tr>
+<tr>
+<td>process-per-site</td>
+<td>同一站点使用相同的进程</td>
+</tr>
+<tr>
+<td>process-per-tab</td>
+<td>同一标签页使用同一进程</td>
+</tr>
+<tr>
+<td>single-process</td>
+<td>浏览器引擎和渲染引擎使用同意进程</td>
+</tr>
+</tbody></table>
+<p>介绍完浏览器的基本内容后，那么当在地址栏中输入内容时会发生什么事情呢？</p>
+<p>当输入内容后，浏览器进程的    UI线程会捕捉输入内容，如果不是一个正确的URL，就会启动浏览器的默认搜索引擎进行查询，如果是一个URL，所进行的事情是本篇文章重点要阐述的。</p>
+<p><strong>前奏</strong></p>
+<p>如果是URL，UI线程便会启动网络进程获取信息，信息获取完毕后，谷歌内部的安全检测系统<em>Safebrowsing</em>会对网站进行检测，如果是恶意网站，则会显示一个恶意网站的界面用来阻止你的访问。当这个站点没问题时，网络进程程通知UI线程已经OK了，这时，UI线程会创建渲染器进程来渲染页面。</p>
+<p>浏览器进程通过IPC将数据传输给渲染器进程。</p>
+<p><strong>它要开始了</strong></p>
+<p>1.渲染器主线程解析HTML代码，构造Dom数据结构，首先通过<em>tokenniser</em>标记化通过词法分析将输入的HTML内容解析成多个标记，根据识别后的的标记进行<strong>Dom tree</strong> 的构造。</p>
+<p>2.主线程通过解析CSS确定Dom节点的计算样式，接下来要知道节点应处于页面中的哪个位置，和节点所占据的大小，该阶段称之为layout布局。</p>
+<p>3.主线程通过便利Dom和计算好的样式生产layout tree 该树上记录了节点的坐标和大小</p>
+<p>4.接着便利layout tree 创建绘制记录表（paint record）产生layer tree 这个阶段称为绘制</p>
+<p>所有东西准备完毕，接下来就要把内容渲染在页面上了！</p>
+<p>5.信息确认完毕后，主线程将信息传递给合成器线程，合成器线程将每个图层切成小块发给栅格化线程，栅格化完毕后，将信息存在GPU中，合成器线程收集称为“draw quads”的图块信息，这些信息记录了图块在内存中的位置和在页面的哪个位置绘制图块的信息根据这些信息合成器线程生成合成器帧，</p>
+<p>6.合成器帧通过ipc传输给浏览器进程，浏览器进程将合成器帧传输给GPU，GPU渲染到屏幕上，当页面变化时，会生成新的合成器帧重复以上步骤</p>
+<p><strong>总结：</strong></p>
+<p>主线程 ：DOM style layout paint layer</p>
+<p><img src="https://img-blog.csdnimg.cn/20201028184907501.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzUzNTAw,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<p>合成器线程：titles   frame</p>
+<p>栅格线程：raster draw quads</p>
+<p><img src="https://img-blog.csdnimg.cn/20201028184920648.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzUzNTAw,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<p><strong><em>介绍几个概念</em></strong></p>
+<p><strong>栅格化</strong>：将信息转化成为像素点的过程</p>
+<p><strong>合成</strong>：将页面的各个部分分成多个图层分别对其栅格化，并在合成器线程中单独进行合成，页面中的所有元素按照某种规则进行分图层。</p>
+<p><strong>重绘</strong>:某些元素的外观改变（颜色外观等改变）</p>
+<p><strong>重排</strong>：重新生成布局，重新排列元素（大小改变）</p>
+<p>重排会浪费性能，所以应该减少或避免重排</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" rel="tag"># 浏览器</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/01/19/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/01/24/%E6%B7%B1%E6%8B%B7%E8%B4%9D%E3%80%81%E9%98%B2%E6%8A%96%E3%80%81%E8%8A%82%E6%B5%81/" rel="prev" title="深拷贝、防抖、节流">
+                深拷贝、防抖、节流 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/head.jpg"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E7%B4%A0%E5%85%BB%E7%AF%87"><span class="nav-number">1.</span> <span class="nav-text">浏览器素养篇</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">甜小仙儿</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
