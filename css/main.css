@@ -1125,7 +1125,7 @@ pre .javascript .function {
   bottom: 30px;
 }
 .header {
-  background: transparent;
+  background: url("../image/headerimg.png");
 }
 .header-inner {
   position: relative;
@@ -1858,7 +1858,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #3cf0ff;
+  background: #ffc263;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3295,4 +3295,22 @@ pre .javascript .function {
   .pagination {
     margin: 8px 0 0;
   }
+}
+.post,
+.header-inner,
+.sidebar-inner,
+.post-block {
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.1), -5px -5px 5px rgba(0,0,0,0.1), 5px -5px 5px rgba(0,0,0,0.1), -5px 5px 5px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  transition: all ease-in-out 0.5s;
+}
+.post:hover,
+.header-inner:hover,
+.sidebar-inner:hover {
+  box-shadow: 10px 10px 10px rgba(0,0,0,0.08), -10px -10px 10px rgba(0,0,0,0.08), 10px -10px 10px rgba(0,0,0,0.08), -10px 10px 10px rgba(0,0,0,0.08);
+}
+.header-inner,
+.post-block,
+.sidebar-inner {
+  margin-top: 20px;
 }
