@@ -1858,7 +1858,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #95ff16;
+  background: #2f2d08;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3300,18 +3300,54 @@ pre .javascript .function {
 .header-inner,
 .sidebar-inner,
 .post-block,
-#posts > article + article .post-block {
+#posts > article + article .post-block,
+.sidebar-tags,
+.card-announcement {
   box-shadow: 5px 5px 5px rgba(0,0,0,0.05), -5px -5px 5px rgba(0,0,0,0.05), 5px -5px 5px rgba(0,0,0,0.05), -5px 5px 5px rgba(0,0,0,0.05);
   border-radius: 10px;
   transition: all ease-in-out 0.3s;
 }
 .post:hover,
 .header-inner:hover,
-.sidebar-inner:hover {
+.sidebar-inner:hover,
+.sidebar-tags:hover,
+.card-announcement:hover {
   box-shadow: 10px 10px 15px rgba(0,0,0,0.06), -10px -10px 15px rgba(0,0,0,0.06), 10px -10px 15px rgba(0,0,0,0.06), -10px 10px 15px rgba(0,0,0,0.06);
 }
 .header-inner,
 .post-block,
 .sidebar-inner {
   margin-top: 20px;
+}
+.sidebar-tags,
+.card-announcement {
+  box-sizing: border-box;
+  padding: 10px;
+  width: 240px;
+  margin-top: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  transition: all 0.3s;
+  margin-right: 20px;
+}
+.item_headline {
+  padding-left: 10px;
+  text-align: left;
+}
+#myCanvasContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#resCanvas {
+  height: 230px;
+  width: 230px;
+}
+.sidebar-inner {
+  opacity: 1 !important;
+}
+.sidebar-inner,
+.card-announcement,
+.sidebar-tags {
+  position: relative !important;
 }
