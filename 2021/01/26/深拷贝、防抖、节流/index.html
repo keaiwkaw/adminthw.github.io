@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="浏览器," />
+  <meta name="keywords" content="JavaScript,JS功能函数," />
 
 
 
@@ -79,22 +79,19 @@
 
 
 
-<meta name="description" content="浏览器素养篇">
+<meta name="description" content="JavaScript 的深拷贝DeepCloneOne:123456789101112131415function deepCloneOne(ori,tar)&amp;#123;   let tar &#x3D; tar||&amp;#123;&amp;#125;   for(let key in ori)&amp;#123;       if(ori.hasOwnProperty(key))&amp;#123;           if(typ">
 <meta property="og:type" content="article">
-<meta property="og:title" content="浏览器素养篇">
-<meta property="og:url" content="http://tianhw.tk/2021/01/24/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%B4%A0%E5%85%BB%E7%AF%87/index.html">
+<meta property="og:title" content="深拷贝、防抖、节流">
+<meta property="og:url" content="http://tianhw.tk/2021/01/26/%E6%B7%B1%E6%8B%B7%E8%B4%9D%E3%80%81%E9%98%B2%E6%8A%96%E3%80%81%E8%8A%82%E6%B5%81/index.html">
 <meta property="og:site_name" content="甜小仙儿">
-<meta property="og:description" content="浏览器素养篇">
+<meta property="og:description" content="JavaScript 的深拷贝DeepCloneOne:123456789101112131415function deepCloneOne(ori,tar)&amp;#123;   let tar &#x3D; tar||&amp;#123;&amp;#125;   for(let key in ori)&amp;#123;       if(ori.hasOwnProperty(key))&amp;#123;           if(typ">
 <meta property="og:locale">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/2020102818481194.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzUzNTAw,size_16,color_FFFFFF,t_70#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201028184907501.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzUzNTAw,size_16,color_FFFFFF,t_70#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201028184920648.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzUzNTAw,size_16,color_FFFFFF,t_70#pic_center">
-<meta property="article:published_time" content="2021-01-24T13:02:58.299Z">
-<meta property="article:modified_time" content="2021-01-25T06:07:53.236Z">
+<meta property="article:published_time" content="2021-01-26T01:47:47.265Z">
+<meta property="article:modified_time" content="2021-01-25T06:07:50.862Z">
 <meta property="article:author" content="甜小仙儿">
-<meta property="article:tag" content="浏览器">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="JS功能函数">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/2020102818481194.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzUzNTAw,size_16,color_FFFFFF,t_70#pic_center">
 
 
 
@@ -124,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://tianhw.tk/2021/01/24/浏览器素养篇/"/>
+  <link rel="canonical" href="http://tianhw.tk/2021/01/26/深拷贝、防抖、节流/"/>
 
 
 
 
 
-  <title>浏览器素养篇 | 甜小仙儿</title>
+  <title>深拷贝、防抖、节流 | 甜小仙儿</title>
   
 
 
@@ -315,7 +312,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://tianhw.tk/2021/01/24/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%B4%A0%E5%85%BB%E7%AF%87/">
+    <link itemprop="mainEntityOfPage" href="http://tianhw.tk/2021/01/26/%E6%B7%B1%E6%8B%B7%E8%B4%9D%E3%80%81%E9%98%B2%E6%8A%96%E3%80%81%E8%8A%82%E6%B5%81/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -332,7 +329,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">浏览器素养篇</h1>
+          <h1 class="post-title" itemprop="name headline">深拷贝、防抖、节流</h1>
         
 
         <div class="post-meta">
@@ -344,8 +341,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-24T21:02:58+08:00">
-                2021-01-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-26T09:47:47+08:00">
+                2021-01-26
               </time>
             
 
@@ -404,106 +401,20 @@
       
 
       
-        <h3 id="浏览器素养篇"><a href="#浏览器素养篇" class="headerlink" title="浏览器素养篇"></a>浏览器素养篇</h3><a id="more"></a>
+        <h4 id="JavaScript-的深拷贝"><a href="#JavaScript-的深拷贝" class="headerlink" title="JavaScript 的深拷贝"></a>JavaScript 的深拷贝</h4><h5 id="DeepCloneOne"><a href="#DeepCloneOne" class="headerlink" title="DeepCloneOne:"></a><strong>DeepCloneOne:</strong></h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepCloneOne</span>(<span class="params">ori,tar</span>)</span>&#123;</span><br><span class="line">   <span class="keyword">let</span> tar = tar||&#123;&#125;</span><br><span class="line">   <span class="keyword">for</span>(<span class="keyword">let</span> key <span class="keyword">in</span> ori)&#123;</span><br><span class="line">       <span class="keyword">if</span>(ori.hasOwnProperty(key))&#123;</span><br><span class="line">           <span class="keyword">if</span>(<span class="keyword">typeof</span> ori[key] === <span class="string">&#x27;object&#x27;</span>&amp;&amp; ori[key]!==<span class="literal">null</span>)&#123;</span><br><span class="line">                tar[key] = <span class="built_in">Object</span>.prototype.toString.call(ori[k]) == <span class="string">&#x27;[object Array]&#x27;</span>?[]:&#123;&#125;</span><br><span class="line">                deepCloneOne(ori[key],tar[key])</span><br><span class="line">           &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">               tar[key] = ori[key]</span><br><span class="line">           &#125;</span><br><span class="line">          </span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">    <span class="keyword">return</span> tar;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  <a id="more"></a>
 
-<p>用户界面：<img src="https://img-blog.csdnimg.cn/2020102818481194.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzUzNTAw,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<p>浏览器引擎：包含数据持久层——存放cookie等数据</p>
-<p>渲染引擎：包含JS解析器，网络模块。渲染引擎通常也被称为内核</p>
-<p>各浏览器内核：</p>
-<table>
-<thead>
-<tr>
-<th>浏览器名称</th>
-<th>内核</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>IE</td>
-<td>Trident</td>
-</tr>
-<tr>
-<td>Firefox</td>
-<td>Gecko</td>
-</tr>
-<tr>
-<td>Safari</td>
-<td>Webkit</td>
-</tr>
-<tr>
-<td>Chrome</td>
-<td>Blink</td>
-</tr>
-<tr>
-<td>Opera</td>
-<td>Blink</td>
-</tr>
-<tr>
-<td>Edge</td>
-<td>Blink</td>
-</tr>
-</tbody></table>
-<p>注：其中Blink内核是基于Webkit内核的。</p>
-<p>在了解浏览器的工作原理之前，有必要知道进程和线程之间的关系和区别，</p>
-<p>进程：是操作系统进行资源分配和调度的基本单元，可以申请和拥有计算机资源，进程是程序的基本执行实体</p>
-<p>线程：操作系统能够进行运算和调度的最小单位，一个进程可以并发多个线程，每个线程并发执行不同的任务</p>
-<p>进程之间传递信息通过通信管道IPC传递，同一进程下的线程可以共享数据</p>
-<p>多进程的浏览器结构</p>
-<p>浏览器进程：负责除标签页外的用户界面（前进后退，地址栏，书签）与浏览器的其他进程的协调工作</p>
-<p>网络进程：负责发送接收网络请求</p>
-<p>GPU进程：浏览器界面的渲染</p>
-<p>插件进程：控制网站中所使用的插件，例如：flash插件（并发你所安装的拓展）</p>
-<p>渲染器进程：控制tab下的所有内容的渲染</p>
-<p>一般在默认情况下浏览器会为每个标签页都创建以上所有的进程，这和你安装浏览器所选择方式有关。</p>
-<p>拿chrome来说吧：</p>
-<table>
-<thead>
-<tr>
-<th>模式</th>
-<th>解释</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>process-per-site-instance</td>
-<td>不同站点同一站点的不同页面都会创建新的进程</td>
-</tr>
-<tr>
-<td>process-per-site</td>
-<td>同一站点使用相同的进程</td>
-</tr>
-<tr>
-<td>process-per-tab</td>
-<td>同一标签页使用同一进程</td>
-</tr>
-<tr>
-<td>single-process</td>
-<td>浏览器引擎和渲染引擎使用同意进程</td>
-</tr>
-</tbody></table>
-<p>介绍完浏览器的基本内容后，那么当在地址栏中输入内容时会发生什么事情呢？</p>
-<p>当输入内容后，浏览器进程的    UI线程会捕捉输入内容，如果不是一个正确的URL，就会启动浏览器的默认搜索引擎进行查询，如果是一个URL，所进行的事情是本篇文章重点要阐述的。</p>
-<p><strong>前奏</strong></p>
-<p>如果是URL，UI线程便会启动网络进程获取信息，信息获取完毕后，谷歌内部的安全检测系统<em>Safebrowsing</em>会对网站进行检测，如果是恶意网站，则会显示一个恶意网站的界面用来阻止你的访问。当这个站点没问题时，网络进程程通知UI线程已经OK了，这时，UI线程会创建渲染器进程来渲染页面。</p>
-<p>浏览器进程通过IPC将数据传输给渲染器进程。</p>
-<p><strong>它要开始了</strong></p>
-<p>1.渲染器主线程解析HTML代码，构造Dom数据结构，首先通过<em>tokenniser</em>标记化通过词法分析将输入的HTML内容解析成多个标记，根据识别后的的标记进行<strong>Dom tree</strong> 的构造。</p>
-<p>2.主线程通过解析CSS确定Dom节点的计算样式，接下来要知道节点应处于页面中的哪个位置，和节点所占据的大小，该阶段称之为layout布局。</p>
-<p>3.主线程通过便利Dom和计算好的样式生产layout tree 该树上记录了节点的坐标和大小</p>
-<p>4.接着便利layout tree 创建绘制记录表（paint record）产生layer tree 这个阶段称为绘制</p>
-<p>所有东西准备完毕，接下来就要把内容渲染在页面上了！</p>
-<p>5.信息确认完毕后，主线程将信息传递给合成器线程，合成器线程将每个图层切成小块发给栅格化线程，栅格化完毕后，将信息存在GPU中，合成器线程收集称为“draw quads”的图块信息，这些信息记录了图块在内存中的位置和在页面的哪个位置绘制图块的信息根据这些信息合成器线程生成合成器帧，</p>
-<p>6.合成器帧通过ipc传输给浏览器进程，浏览器进程将合成器帧传输给GPU，GPU渲染到屏幕上，当页面变化时，会生成新的合成器帧重复以上步骤</p>
-<p><strong>总结：</strong></p>
-<p>主线程 ：DOM style layout paint layer</p>
-<p><img src="https://img-blog.csdnimg.cn/20201028184907501.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzUzNTAw,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<p>合成器线程：titles   frame</p>
-<p>栅格线程：raster draw quads</p>
-<p><img src="https://img-blog.csdnimg.cn/20201028184920648.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzUzNTAw,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<p><strong><em>介绍几个概念</em></strong></p>
-<p><strong>栅格化</strong>：将信息转化成为像素点的过程</p>
-<p><strong>合成</strong>：将页面的各个部分分成多个图层分别对其栅格化，并在合成器线程中单独进行合成，页面中的所有元素按照某种规则进行分图层。</p>
-<p><strong>重绘</strong>:某些元素的外观改变（颜色外观等改变）</p>
-<p><strong>重排</strong>：重新生成布局，重新排列元素（大小改变）</p>
-<p>重排会浪费性能，所以应该减少或避免重排</p>
+<p>第一版的深拷贝会出现什么问题呢？</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = &#123;&#125;</span><br><span class="line"><span class="keyword">let</span> b = &#123;&#125;</span><br><span class="line">a.b = b</span><br><span class="line">b.a = a</span><br><span class="line">deepCloneOne(a);</span><br></pre></td></tr></table></figure>
+<p><strong>问题1</strong>：跑上面的代码会出现死循环问题，为什么呢？b已经拷贝过了，但是b里又有a，a里又有b所以，第一个代码会无限的克隆下去，</p>
+<p><strong>解决</strong>：正确的做法是记录下已经克隆过的属性，克隆过就不再克隆，使用WeakMap来记录属性是否已经拷贝过</p>
+<p><strong>问题2</strong>：上面的深拷贝会出现<code>Date RegExp </code>这种特殊的引用值无法拷贝</p>
+<p><strong>解决</strong>:判断是否为上面的特殊对象</p>
+<h5 id="DeepCloneTwo"><a href="#DeepCloneTwo" class="headerlink" title="DeepCloneTwo:"></a><strong>DeepCloneTwo:</strong></h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepCloneTwo</span>(<span class="params">origin, hashMap = <span class="keyword">new</span> <span class="built_in">WeakMap</span>()</span>)</span>&#123;</span><br><span class="line">          <span class="keyword">const</span> hashKey = hashMap.get(origin);</span><br><span class="line">          <span class="keyword">if</span>(origin == <span class="literal">undefined</span> ||<span class="keyword">typeof</span> origin!==<span class="string">&#x27;object&#x27;</span>) <span class="keyword">return</span> origin;</span><br><span class="line">          <span class="keyword">if</span>(origin <span class="keyword">instanceof</span> <span class="built_in">Date</span>) <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Date</span>(origin)</span><br><span class="line">          <span class="keyword">if</span>(origin <span class="keyword">instanceof</span> <span class="built_in">RegExp</span>) <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">RegExp</span>(origin)</span><br><span class="line">          <span class="keyword">if</span>(hashKey) <span class="keyword">return</span> hashKey</span><br><span class="line">          <span class="keyword">const</span> tar = <span class="keyword">new</span> origin.constructor();</span><br><span class="line">          hashMap.set(origin, tar)</span><br><span class="line">          <span class="keyword">for</span> (<span class="keyword">const</span> key <span class="keyword">in</span> origin) &#123;</span><br><span class="line">              <span class="keyword">if</span> (origin.hasOwnProperty(key)) &#123;</span><br><span class="line">                  tar[key] = deepCloneTwo(origin[key],hashMap)</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">return</span> tar;</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
+<p>为什么要使用weakmap而不使用map?</p>
+<p>当键名不在时，他的内存会被自动的回收——————防止内存泄漏</p>
+<h4 id="debounce"><a href="#debounce" class="headerlink" title="debounce"></a>debounce</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">debounce</span>(<span class="params">fn, delay, immediately</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> timer = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">let</span> debounced =  <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> that = <span class="built_in">this</span>;</span><br><span class="line">    <span class="keyword">let</span> args = <span class="built_in">arguments</span></span><br><span class="line">    <span class="keyword">if</span> (timer) &#123;</span><br><span class="line">      <span class="built_in">clearTimeout</span>(timer)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (immediately) &#123;</span><br><span class="line">      <span class="keyword">let</span> callnow = !timer</span><br><span class="line">      timer = <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        timer = <span class="literal">null</span>;</span><br><span class="line">      &#125;,delay)</span><br><span class="line">      <span class="keyword">if</span> (callnow) &#123;</span><br><span class="line">        fn.apply(that,args)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        fn.apply(that,args)</span><br><span class="line">      &#125;,delay)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  debounced.cancel = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">clearTimeout</span>(timer)</span><br><span class="line">    timer = <span class="literal">null</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> debounced;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="throttle"><a href="#throttle" class="headerlink" title="throttle"></a>throttle</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">throttle</span>(<span class="params">fn, delay, options</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> timer = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">let</span> old = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> that = <span class="built_in">this</span>;</span><br><span class="line">    <span class="keyword">let</span> args = <span class="built_in">arguments</span>;</span><br><span class="line">    <span class="keyword">let</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>().valueOf();</span><br><span class="line">    <span class="keyword">if</span> (options.leading == <span class="literal">false</span>) &#123;</span><br><span class="line">      old = now;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (now - old&gt;delay) &#123;</span><br><span class="line">      <span class="keyword">if</span> (timer) &#123;</span><br><span class="line">        <span class="built_in">clearTimeout</span>(timer);</span><br><span class="line">        timer = <span class="literal">null</span></span><br><span class="line">      &#125;</span><br><span class="line">      fn.apply(fn, args)</span><br><span class="line">      old = now</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (!timer &amp;&amp; options.trailing!==<span class="literal">false</span>) &#123;</span><br><span class="line">      <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        old = <span class="keyword">new</span> <span class="built_in">Date</span>().valueOf()</span><br><span class="line">        fn.apply(that, args)</span><br><span class="line">        timer = <span class="literal">null</span></span><br><span class="line">      &#125;,delay)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -521,7 +432,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" rel="tag"># 浏览器</a>
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+            <a href="/tags/JS%E5%8A%9F%E8%83%BD%E5%87%BD%E6%95%B0/" rel="tag"># JS功能函数</a>
           
         </div>
       
@@ -534,14 +447,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2021/01/26/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%B4%A0%E5%85%BB%E7%AF%87/" rel="next" title="浏览器素养篇">
+                <i class="fa fa-chevron-left"></i> 浏览器素养篇
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2021/01/24/%E6%B7%B1%E6%8B%B7%E8%B4%9D%E3%80%81%E9%98%B2%E6%8A%96%E3%80%81%E8%8A%82%E6%B5%81/" rel="prev" title="深拷贝、防抖、节流">
-                深拷贝、防抖、节流 <i class="fa fa-chevron-right"></i>
+              <a href="/2021/01/26/%E6%A0%87%E7%AD%BE/" rel="prev" title="Vue响应式原理">
+                Vue响应式原理 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -623,7 +540,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -645,7 +562,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -694,7 +611,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E7%B4%A0%E5%85%BB%E7%AF%87"><span class="nav-number">1.</span> <span class="nav-text">浏览器素养篇</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#JavaScript-%E7%9A%84%E6%B7%B1%E6%8B%B7%E8%B4%9D"><span class="nav-number">1.</span> <span class="nav-text">JavaScript 的深拷贝</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#DeepCloneOne"><span class="nav-number">1.1.</span> <span class="nav-text">DeepCloneOne:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#DeepCloneTwo"><span class="nav-number">1.2.</span> <span class="nav-text">DeepCloneTwo:</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#debounce"><span class="nav-number">2.</span> <span class="nav-text">debounce</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#throttle"><span class="nav-number">3.</span> <span class="nav-text">throttle</span></a></li></ol></div>
             
 
           </div>
@@ -703,8 +620,39 @@
       
 
       
-
     </div>
+
+<div class="card-announcement">
+    <div class="card-content">
+        <div class="item_headline">
+        <i class="fa fa-bullhorn card-announcement-animation" aria-hidden="true"></i>
+        <span>公告</span>
+    </div>
+        <div class="announcement_content">
+        谢谢你这么帅，这么漂亮还来看我的博客，如果喜欢的话记得收藏哦
+        </div>
+    </div>
+</div>
+
+
+
+<div class="sidebar-tags">
+    <div class="item_headline">
+    <i class="fa fa-tags" aria-hidden="true"></i>
+    <span>标签云</span>
+    </div>
+    
+    <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+    <div class="widget-wrap">
+        <div id="myCanvasContainer" class="widget tagcloud">
+        <canvas  id="resCanvas" style="width=100%">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS%E5%8A%9F%E8%83%BD%E5%87%BD%E6%95%B0/" rel="tag">JS功能函数</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS%E6%96%B9%E6%B3%95%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9E%E7%8E%B0/" rel="tag">JS方法函数的实现</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/" rel="tag">Vue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue%E5%8E%9F%E7%90%86/" rel="tag">Vue原理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/" rel="tag">webpack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" rel="tag">数据结构与算法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" rel="tag">浏览器</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82/" rel="tag">网络请求</a><span class="tag-list-count">1</span></li></ul>
+        </canvas>
+        </div>
+    </div>
+    
+</div>
   </aside>
 
 
@@ -1264,5 +1212,5 @@
 
   
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right top","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
 </html>

@@ -1858,7 +1858,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #4a501d;
+  background: #95ff16;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3301,14 +3301,14 @@ pre .javascript .function {
 .sidebar-inner,
 .post-block,
 #posts > article + article .post-block {
-  box-shadow: 5px 5px 5px rgba(0,0,0,0.1), -5px -5px 5px rgba(0,0,0,0.1), 5px -5px 5px rgba(0,0,0,0.1), -5px 5px 5px rgba(0,0,0,0.1);
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.05), -5px -5px 5px rgba(0,0,0,0.05), 5px -5px 5px rgba(0,0,0,0.05), -5px 5px 5px rgba(0,0,0,0.05);
   border-radius: 10px;
   transition: all ease-in-out 0.3s;
 }
 .post:hover,
 .header-inner:hover,
 .sidebar-inner:hover {
-  box-shadow: 10px 10px 10px rgba(0,0,0,0.1), -10px -10px 10px rgba(0,0,0,0.1), 10px -10px 10px rgba(0,0,0,0.1), -10px 10px 10px rgba(0,0,0,0.1);
+  box-shadow: 10px 10px 15px rgba(0,0,0,0.06), -10px -10px 15px rgba(0,0,0,0.06), 10px -10px 15px rgba(0,0,0,0.06), -10px 10px 15px rgba(0,0,0,0.06);
 }
 .header-inner,
 .post-block,
