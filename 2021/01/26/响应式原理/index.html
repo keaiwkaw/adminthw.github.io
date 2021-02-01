@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Vue,Vue原理," />
+  <meta name="keywords" content="Vue,Vue核心," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Vue响应式原理Vue2.x响应式原理不熟悉Object点击直达链接–Object、 想必已经知道Vue2的响应式原理是Object.defineProperty,所以接下来我直接来说响应式原理的实现，如果你对这个方法还不清楚，你可以看这篇 12345678910Object.defineProperties(obj,&amp;#123;    prop1:&amp;#123;        set(Newval">
+<meta name="description" content="Vue核心之响应式原理Vue2.x响应式原理不熟悉Object点击直达链接–Object、 想必已经知道Vue2的响应式原理是Object.defineProperty,所以接下来我直接来说响应式原理的实现，如果你对这个方法还不清楚，你可以看这篇 12345678910Object.defineProperties(obj,&amp;#123;    prop1:&amp;#123;        set(New">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Vue响应式原理">
+<meta property="og:title" content="Vue核心之响应式原理">
 <meta property="og:url" content="http://tianhw.tk/2021/01/26/%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86/index.html">
 <meta property="og:site_name" content="甜小仙儿">
-<meta property="og:description" content="Vue响应式原理Vue2.x响应式原理不熟悉Object点击直达链接–Object、 想必已经知道Vue2的响应式原理是Object.defineProperty,所以接下来我直接来说响应式原理的实现，如果你对这个方法还不清楚，你可以看这篇 12345678910Object.defineProperties(obj,&amp;#123;    prop1:&amp;#123;        set(Newval">
+<meta property="og:description" content="Vue核心之响应式原理Vue2.x响应式原理不熟悉Object点击直达链接–Object、 想必已经知道Vue2的响应式原理是Object.defineProperty,所以接下来我直接来说响应式原理的实现，如果你对这个方法还不清楚，你可以看这篇 12345678910Object.defineProperties(obj,&amp;#123;    prop1:&amp;#123;        set(New">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-01-26T01:47:47.262Z">
-<meta property="article:modified_time" content="2021-01-25T16:08:00.359Z">
+<meta property="article:modified_time" content="2021-02-01T17:43:50.471Z">
 <meta property="article:author" content="甜小仙儿">
 <meta property="article:tag" content="Vue">
-<meta property="article:tag" content="Vue原理">
+<meta property="article:tag" content="Vue核心">
 <meta name="twitter:card" content="summary">
 
 
@@ -127,7 +127,7 @@
 
 
 
-  <title>Vue响应式原理 | 甜小仙儿</title>
+  <title>Vue核心之响应式原理 | 甜小仙儿</title>
   
 
 
@@ -329,7 +329,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Vue响应式原理</h1>
+          <h1 class="post-title" itemprop="name headline">Vue核心之响应式原理</h1>
         
 
         <div class="post-meta">
@@ -401,7 +401,7 @@
       
 
       
-        <h1 id="Vue响应式原理"><a href="#Vue响应式原理" class="headerlink" title="Vue响应式原理"></a>Vue响应式原理</h1><h2 id="Vue2-x响应式原理"><a href="#Vue2-x响应式原理" class="headerlink" title="Vue2.x响应式原理"></a>Vue2.x响应式原理</h2><p>不熟悉Object点击直达链接–<a target="_blank" rel="noopener" href="http://www.tianhw.tk/2021/01/26/Object_Function_Proxy_Promise_Array_String_RegExp/#more">Object</a>、</p>
+        <h1 id="Vue核心之响应式原理"><a href="#Vue核心之响应式原理" class="headerlink" title="Vue核心之响应式原理"></a>Vue核心之响应式原理</h1><h2 id="Vue2-x响应式原理"><a href="#Vue2-x响应式原理" class="headerlink" title="Vue2.x响应式原理"></a>Vue2.x响应式原理</h2><p>不熟悉Object点击直达链接–<a target="_blank" rel="noopener" href="http://www.tianhw.tk/2021/01/26/Object_Function_Proxy_Promise_Array_String_RegExp/#more">Object</a>、</p>
 <p>想必已经知道Vue2的响应式原理是<em>Object.defineProperty</em>,所以接下来我直接来说响应式原理的实现，如果你对这个方法还不清楚，你可以看这篇</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.defineProperties(obj,&#123;</span><br><span class="line">    prop1:&#123;</span><br><span class="line">        <span class="function"><span class="title">set</span>(<span class="params">Newvalue</span>)</span>&#123;</span><br><span class="line">           <span class="comment">//dom操作 </span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="title">get</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    		<span class="keyword">return</span> value</span><br><span class="line">		&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <p>没错正如你所见，数据的双向绑定响应式说白了就是在设置值的时候同时操作Dom</p>
@@ -437,7 +437,7 @@
           
             <a href="/tags/Vue/" rel="tag"># Vue</a>
           
-            <a href="/tags/Vue%E5%8E%9F%E7%90%86/" rel="tag"># Vue原理</a>
+            <a href="/tags/Vue%E6%A0%B8%E5%BF%83/" rel="tag"># Vue核心</a>
           
         </div>
       
@@ -543,7 +543,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -614,7 +614,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Vue%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86"><span class="nav-number">1.</span> <span class="nav-text">Vue响应式原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue2-x%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86"><span class="nav-number">1.1.</span> <span class="nav-text">Vue2.x响应式原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue3%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86"><span class="nav-number">1.2.</span> <span class="nav-text">Vue3响应式原理</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Vue%E6%A0%B8%E5%BF%83%E4%B9%8B%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86"><span class="nav-number">1.</span> <span class="nav-text">Vue核心之响应式原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue2-x%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86"><span class="nav-number">1.1.</span> <span class="nav-text">Vue2.x响应式原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue3%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86"><span class="nav-number">1.2.</span> <span class="nav-text">Vue3响应式原理</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -650,7 +650,7 @@
     <div class="widget-wrap">
         <div id="myCanvasContainer" class="widget tagcloud">
         <canvas  id="resCanvas" style="width=100%">
-            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS%E5%8A%9F%E8%83%BD%E5%87%BD%E6%95%B0/" rel="tag">JS功能函数</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS%E6%96%B9%E6%B3%95%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9E%E7%8E%B0/" rel="tag">JS方法函数的实现</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/" rel="tag">Vue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue%E5%8E%9F%E7%90%86/" rel="tag">Vue原理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/" rel="tag">webpack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" rel="tag">浏览器</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS%E5%8A%9F%E8%83%BD%E5%87%BD%E6%95%B0/" rel="tag">JS功能函数</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS%E6%96%B9%E6%B3%95%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9E%E7%8E%B0/" rel="tag">JS方法函数的实现</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/" rel="tag">Vue</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue%E6%A0%B8%E5%BF%83/" rel="tag">Vue核心</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/" rel="tag">webpack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" rel="tag">浏览器</a><span class="tag-list-count">1</span></li></ul>
         </canvas>
         </div>
     </div>
