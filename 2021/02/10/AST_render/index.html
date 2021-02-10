@@ -72,7 +72,7 @@
 
 
 
-  <meta name="keywords" content="Sass,CSS预编译器," />
+  <meta name="keywords" content="Vue,Vue核心," />
 
 
 
@@ -83,19 +83,21 @@
 
 
 
-<meta name="description" content="快速上手Sass一直说学下css的预编译器，在less和sass之间我选择了sass 废话少说吧，接下来2介绍sass的使用， 1.变量例如 $bgClolor : #FFF; ,在css中就可以直接使用 background:$bgClolor; 2.作用域的概念在sass中如果变量写在 {} 里面，则变量只在**{}**里面有效">
+<meta name="description" content="前言：最近在学习AST树的相关概念，越来越多的知识要学习，要学习的东西也越来越难，之前的东西也忘的差不多，所以还是要认真学认真复习。 文章对字符串和正则的水平要求高。扪心自问，我写不出这样的代码。  ASTAST （Abstract syntax tree—抽象语法树，抽象语法树就是把某一个结构用树形描述出来。例如一段程序，一个DOM结构等等 在Vue的模板编译中，就需要将模板，也就是DOM结构">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Sass的基本使用">
-<meta property="og:url" content="http://tianhw.tk/2021/02/05/Sass%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:title" content="AST and Render">
+<meta property="og:url" content="http://tianhw.tk/2021/02/10/AST_render/index.html">
 <meta property="og:site_name" content="甜小仙儿">
-<meta property="og:description" content="快速上手Sass一直说学下css的预编译器，在less和sass之间我选择了sass 废话少说吧，接下来2介绍sass的使用， 1.变量例如 $bgClolor : #FFF; ,在css中就可以直接使用 background:$bgClolor; 2.作用域的概念在sass中如果变量写在 {} 里面，则变量只在**{}**里面有效">
+<meta property="og:description" content="前言：最近在学习AST树的相关概念，越来越多的知识要学习，要学习的东西也越来越难，之前的东西也忘的差不多，所以还是要认真学认真复习。 文章对字符串和正则的水平要求高。扪心自问，我写不出这样的代码。  ASTAST （Abstract syntax tree—抽象语法树，抽象语法树就是把某一个结构用树形描述出来。例如一段程序，一个DOM结构等等 在Vue的模板编译中，就需要将模板，也就是DOM结构">
 <meta property="og:locale">
-<meta property="article:published_time" content="2021-02-05T08:31:49.579Z">
-<meta property="article:modified_time" content="2021-02-05T08:31:49.579Z">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/a66b84d9dfde8b3edc52de1dcb2ba647.png">
+<meta property="article:published_time" content="2021-02-10T08:11:23.106Z">
+<meta property="article:modified_time" content="2021-02-10T08:42:05.604Z">
 <meta property="article:author" content="甜小仙儿">
-<meta property="article:tag" content="Sass">
-<meta property="article:tag" content="CSS预编译器">
+<meta property="article:tag" content="Vue">
+<meta property="article:tag" content="Vue核心">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/img_convert/a66b84d9dfde8b3edc52de1dcb2ba647.png">
 
 
 
@@ -125,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://tianhw.tk/2021/02/05/Sass的基本使用/"/>
+  <link rel="canonical" href="http://tianhw.tk/2021/02/10/AST_render/"/>
 
 
 
 
 
-  <title>Sass的基本使用 | 甜小仙儿</title>
+  <title>AST and Render | 甜小仙儿</title>
   
 
 
@@ -316,7 +318,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://tianhw.tk/2021/02/05/Sass%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/">
+    <link itemprop="mainEntityOfPage" href="http://tianhw.tk/2021/02/10/AST_render/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -333,7 +335,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Sass的基本使用</h1>
+          <h1 class="post-title" itemprop="name headline">AST and Render</h1>
         
 
         <div class="post-meta">
@@ -345,8 +347,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-02-05T16:31:49+08:00">
-                2021-02-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-02-10T16:11:23+08:00">
+                2021-02-10
               </time>
             
 
@@ -399,7 +401,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  697 words
+                  1.7k words
                 </span>
               
 
@@ -415,7 +417,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2  min
+                  7  min
                 </span>
               
             </div>
@@ -436,40 +438,83 @@
       
 
       
-        <h1 id="快速上手Sass"><a href="#快速上手Sass" class="headerlink" title="快速上手Sass"></a>快速上手Sass</h1><p>一直说学下css的预编译器，在less和sass之间我选择了sass</p>
-<p>废话少说吧，接下来2介绍sass的使用，</p>
-<h2 id="1-变量"><a href="#1-变量" class="headerlink" title="1.变量"></a>1.变量</h2><p>例如 <code>$bgClolor : #FFF;</code> ,在css中就可以直接使用 <code>background:$bgClolor;</code></p>
-<h2 id="2-作用域的概念"><a href="#2-作用域的概念" class="headerlink" title="2.作用域的概念"></a>2.作用域的概念</h2><p>在sass中如果变量写在 <strong>{}</strong> 里面，则变量只在**{}**里面有效</p>
+        <blockquote>
+<p>前言：最近在学习AST树的相关概念，越来越多的知识要学习，要学习的东西也越来越难，之前的东西也忘的差不多，所以还是要认真学认真复习。</p>
+<p>文章对字符串和正则的水平要求高。扪心自问，我写不出这样的代码。</p>
+</blockquote>
+<h1 id="AST"><a href="#AST" class="headerlink" title="AST"></a>AST</h1><p>AST （Abstract syntax tree—抽象语法树，抽象语法树就是把某一个结构用树形描述出来。例如一段程序，一个DOM结构等等</p>
+<p>在Vue的模板编译中，就需要将模板，也就是DOM结构首先编译成 AST 再进行下步的操作，基本的思想就是将DOM模板当成纯字符串处理，每处理一部分就删除一部分直到模板为空。</p>
 <a id="more"></a>
 
-<h2 id="3-中划线和下划线"><a href="#3-中划线和下划线" class="headerlink" title="3.中划线和下划线"></a>3.中划线和下划线</h2><p><em>在sass中是不严格区分中划线和下划线的</em>，这个意思就是，当你声明的变量是中划线时，调用的时候你完全可以使用下划线来调用(反之亦然)</p>
-<p>例如<code> $background-color:#ddd;   background:$background_color;</code></p>
-<p>4.嵌套原理</p>
-<p>例如 </p>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line"></span><br><span class="line">​	<span class="selector-tag">p</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//编译后</span></span><br><span class="line"><span class="selector-tag">div</span> <span class="selector-tag">p</span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="parseHtmlToAST"><a href="#parseHtmlToAST" class="headerlink" title="parseHtmlToAST"></a>parseHtmlToAST</h2><p>这个函数的作用就是将模板转化成AST</p>
+<p>在转化前需要用到一系列的正则 这些正则可以在<a target="_blank" rel="noopener" href="https://github.com/vuejs/vue/blob/dev/src/compiler/parser/html-parser.js">Vue的源码</a>中找到</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> attribute = <span class="regexp">/^\s*([^\s&quot;&#x27;&lt;&gt;\/=]+)(?:\s*(=)\s*(?:&quot;([^&quot;]*)&quot;+|&#x27;([^&#x27;]*)&#x27;+|([^\s&quot;&#x27;=&lt;&gt;`]+)))?/</span>;  <span class="comment">//匹配属性</span></span><br><span class="line"><span class="keyword">const</span> dynamicArgAttribute = <span class="regexp">/^\s*((?:v-[\w-]+:|@|:|#)\[[^=]+?\][^\s&quot;&#x27;&lt;&gt;\/=]*)(?:\s*(=)\s*(?:&quot;([^&quot;]*)&quot;+|&#x27;([^&#x27;]*)&#x27;+|([^\s&quot;&#x27;=&lt;&gt;`]+)))?/</span>;</span><br><span class="line"><span class="keyword">const</span> ncname = <span class="string">`[a-zA-Z_][\\-\\.0-9_a-zA-Z]*`</span>;</span><br><span class="line"><span class="keyword">const</span> qnameCapture = <span class="string">`((?:<span class="subst">$&#123;ncname&#125;</span>\\:)?<span class="subst">$&#123;ncname&#125;</span>)`</span>;</span><br><span class="line"><span class="keyword">const</span> startTagOpen = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">`^&lt;<span class="subst">$&#123;qnameCapture&#125;</span>`</span>);          <span class="comment">//匹配标签的开始</span></span><br><span class="line"><span class="keyword">const</span> startTagClose = <span class="regexp">/^\s*(\/?)&gt;/</span>;                  <span class="comment">//匹配标签的结束</span></span><br><span class="line"><span class="keyword">const</span> endTag = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">`^&lt;\\/<span class="subst">$&#123;qnameCapture&#125;</span>[^&gt;]*&gt;`</span>);   <span class="comment">//匹配结束标签</span></span><br></pre></td></tr></table></figure>
+<p>需要用到以下变量</p>
+<ul>
+<li>text         保存匹配到的文本</li>
+<li>root         保存AST树</li>
+<li>currentParent      当前元素的父元素</li>
+<li>stack        利用进栈出栈操作模拟出谁是谁的子元素</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (html) &#123;</span><br><span class="line">   <span class="keyword">let</span> textEnd = html.indexOf(<span class="string">&quot;&lt;&quot;</span>);   <span class="comment">//查找 &lt;  位置</span></span><br><span class="line">   <span class="keyword">if</span> (textEnd === <span class="number">0</span>) &#123;  <span class="comment">//开头出现</span></span><br><span class="line">     <span class="keyword">const</span> startTagMatch = parseStartTag();  <span class="comment">//返回标签的名称与属性</span></span><br><span class="line">     <span class="keyword">if</span> (startTagMatch) &#123;   </span><br><span class="line">       start(startTagMatch.tagName, startTagMatch.attrs);  <span class="comment">//匹配到开始标签，交给start函数</span></span><br><span class="line">       <span class="keyword">continue</span>;</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">const</span> endTgaMatch = html.match(endTag);        </span><br><span class="line">     <span class="keyword">if</span> (endTgaMatch) &#123;        </span><br><span class="line">       advance(endTgaMatch[<span class="number">0</span>].length); </span><br><span class="line">       end(endTgaMatch[<span class="number">1</span>]);          <span class="comment">//匹配到结束标签，交给end函数</span></span><br><span class="line">       <span class="keyword">continue</span>;</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">if</span> (textEnd &gt; <span class="number">0</span>) &#123;   <span class="comment">//&lt; 未出现在开头，需要截取这部分 </span></span><br><span class="line">     text = html.substring(<span class="number">0</span>, textEnd);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">if</span> (text) &#123;    <span class="comment">//判段该部分文字是否需要chars() 处理</span></span><br><span class="line">     advance(text.length);</span><br><span class="line">     chars(text);</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>当模板不为空就需要一直的操作下去，检测标签开始判断标签开始是否在第一位，如果不在说明前面有文字，截取掉文字后继续处理</p>
+<h3 id="parseStartTag"><a href="#parseStartTag" class="headerlink" title="parseStartTag"></a>parseStartTag</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> match = &#123;</span><br><span class="line">        tagName: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">        attrs: [],</span><br><span class="line">      &#125;;</span><br></pre></td></tr></table></figure>
+<p>返回如下结构，标签名称与属性</p>
+<h3 id="start-tagName-attrs"><a href="#start-tagName-attrs" class="headerlink" title="start(tagName, attrs)"></a>start(<em>tagName</em>, <em>attrs</em>)</h3><p>如果root 存在则给currentParent赋值为当前元素，并将当前元素入栈</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> element = createASTElement(tagName, attrs);</span><br><span class="line">   <span class="keyword">if</span> (!root) &#123;</span><br><span class="line">     root = element;</span><br><span class="line">   &#125;</span><br><span class="line">   currentParent = element;</span><br><span class="line">   stack.push(element);</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="end-tagName"><a href="#end-tagName" class="headerlink" title="end(tagName)"></a>end(tagName)</h3><p>调用end函数说明遇到了结束标签这时候就要从栈取出父元素并同时给当前元素的parent属性赋值，给父元素的children元素push当前元素</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">onst element = stack.pop();</span><br><span class="line">    currentParent = stack[stack.length - <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">if</span> (currentParent) &#123;</span><br><span class="line">      element.parent = currentParent;</span><br><span class="line">      currentParent.children.push(element);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="chars-text"><a href="#chars-text" class="headerlink" title="chars(text)"></a>chars(<em>text</em>)</h3><p>对截取的文本进行处理，如果文本*trim()*后存在的话，将该文本压入到父元素的儿子中</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">currentParent.children.push(&#123;</span><br><span class="line">       type: <span class="number">3</span>,</span><br><span class="line">       text,</span><br><span class="line">     &#125;);</span><br></pre></td></tr></table></figure>
 
 
 
 
-<p>所以当你想给div 添加伪类时，该怎么操作呢？在sass中提供了 &amp; 这个代表父级，所以伪类 &amp;:hover{}  这样就好</p>
-<p><strong>特殊的：</strong></p>
-<p>例如我们写<code>background-color:; background-image:; </code>这样就会重复写很多，sass提供了这样的写法</p>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">background</span>:&#123;</span><br><span class="line"></span><br><span class="line">	image:;</span><br><span class="line"></span><br><span class="line">	<span class="attribute">color</span>:;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="createASTElement-tagName-attrs"><a href="#createASTElement-tagName-attrs" class="headerlink" title="createASTElement(tagName, attrs)"></a>createASTElement(<em>tagName</em>, <em>attrs</em>)</h3><p>供start函数调用，返回元素的基本信息</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> &#123;</span><br><span class="line">     tag: tagName,</span><br><span class="line">     type: <span class="number">1</span>,</span><br><span class="line">     children: [],</span><br><span class="line">     attrs,</span><br><span class="line">     parent,</span><br><span class="line">   &#125;;</span><br></pre></td></tr></table></figure>
+<p>疑问一：为什么出栈入栈操作可以模拟出元素的层次结构呢？</p>
+<p>答：**栈中最后一个元素的父级总是前一个元素 ** 例如 :<code>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;/div&gt;</code></p>
+<p>[div,p] 先碰到<code>&lt;div&gt;</code>div入栈，碰到<code>&lt;p&gt; </code>p入栈,碰到<code>&lt;/p&gt;</code> p 出栈父元素赋值为p的前一个元素（div）</p>
+<h3 id="advance-n"><a href="#advance-n" class="headerlink" title="advance(n)"></a>advance(<em>n</em>)</h3><p>删除已经处理过的字符串</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">html = html.substring(n);</span><br></pre></td></tr></table></figure>
+<p>最终生成AST的样子：</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/a66b84d9dfde8b3edc52de1dcb2ba647.png" alt="image-20210210155508979"></p>
+<h1 id="render"><a href="#render" class="headerlink" title="render"></a>render</h1><h2 id="code"><a href="#code" class="headerlink" title="code"></a>code</h2><p>在返回render函数之前首先要对AST进行处理生成code </p>
+<p>建议看下面的生成好的代码，可以更快速的了解属性等东西要拼凑成什么样子的字符串</p>
+<p><code>const defaultTagRE = /\&#123;\&#123;((?:.|\r?\n)+?)\&#125;\&#125;/g; //匹配双大括号</code></p>
+<h3 id="generate-el"><a href="#generate-el" class="headerlink" title="generate(el)"></a>generate(el)</h3><p>返回code字符串,处理标签元素的的函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> children = getChildren(el),</span><br><span class="line">    code = <span class="string">`_c(&#x27;<span class="subst">$&#123;el.tag&#125;</span>&#x27;,<span class="subst">$&#123;</span></span></span><br><span class="line"><span class="string"><span class="subst">      el.attrs.length &gt; <span class="number">0</span> ? <span class="string">`<span class="subst">$&#123;formatProps(el.attrs)&#125;</span>`</span> : <span class="string">&quot;undefined&quot;</span></span></span></span><br><span class="line"><span class="string"><span class="subst">    &#125;</span><span class="subst">$&#123;children ? <span class="string">`,<span class="subst">$&#123;children&#125;</span>`</span> : <span class="string">&quot;&quot;</span>&#125;</span>)`</span>;</span><br><span class="line">  <span class="keyword">return</span> code;</span><br></pre></td></tr></table></figure>
+<h3 id="generateChild-node"><a href="#generateChild-node" class="headerlink" title="generateChild(node)"></a>generateChild(node)</h3><p>供getchildren函数调用，根据node.type的类型不同做出不同的处理，当是文本节点时，就要判断<code>&#123;&#123;&#125;&#125;</code>出现的位置，并进行合适的拼凑</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (node.type === <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> generate(node);</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (node.type === <span class="number">3</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> text = node.text;</span><br><span class="line">    <span class="keyword">if</span> (!defaultTagRE.test(text)) &#123;  <span class="comment">//匹配不到&#123;&#123;&#125;&#125;，说明是纯文本节点</span></span><br><span class="line">      <span class="keyword">return</span> <span class="string">`_v(<span class="subst">$&#123;<span class="built_in">JSON</span>.stringify(text)&#125;</span>)`</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> match,</span><br><span class="line">      index,</span><br><span class="line">      lastIndex = (defaultTagRE.lastIndex = <span class="number">0</span>),</span><br><span class="line">      textArr = [];</span><br><span class="line">    <span class="keyword">while</span> ((match = defaultTagRE.exec(text))) &#123;</span><br><span class="line">      index = match.index;</span><br><span class="line">      <span class="keyword">if</span> (index &gt; lastIndex) &#123;     <span class="comment">//&#123;&#123;之前有文本， 将文本压入textARR</span></span><br><span class="line">        textArr.push(<span class="built_in">JSON</span>.stringify(text.slice(lastIndex, index)));</span><br><span class="line">      &#125;</span><br><span class="line">      textArr.push(<span class="string">`_s(<span class="subst">$&#123;match[<span class="number">1</span>].trim()&#125;</span>)`</span>);  <span class="comment">// 将变量按_s&#123;name&#125; 的字符压入  textARR</span></span><br><span class="line">      lastIndex = index + match[<span class="number">0</span>].length;     <span class="comment">//正则指针后移</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (lastIndex &lt; text.length) &#123;    <span class="comment">//处理&#125;&#125;后还有文本的情况     </span></span><br><span class="line">      textArr.push(<span class="built_in">JSON</span>.stringify(text.slice(lastIndex)));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`_v(<span class="subst">$&#123;textArr.join(<span class="string">&quot;+&quot;</span>)&#125;</span>)`</span>;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 
 
-<h2 id="5-导入"><a href="#5-导入" class="headerlink" title="5.导入"></a>5.导入</h2><p>在css文件中可以使用 @import 的方式导入css文件，在sass中也可以且可以省略文件后缀，在普通css文件使用@import导入时，解析到该条语句，导入的css文件才会加载，但在sass中，不会出现这样的问题。</p>
-<p>如果导入别的文件，别的文件中的变量，你的文件中也有，所以就会产生覆盖现象，你可以为你的变量添加 !default 当文件有这个变量时，使用这个变量，当没有时，使用默认值</p>
-<p>​    嵌套导入 ：你可以在{} 里使用@import</p>
-<h2 id="6-注释"><a href="#6-注释" class="headerlink" title="6.注释"></a>6.注释</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">body &#123;</span><br><span class="line">  color: #333; &#x2F;&#x2F; 这种注释内容不会出现在生成的css文件中</span><br><span class="line">  padding: 0; &#x2F;* 这种注释内容会出现在生成的css文件中 *&#x2F;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="7-混合器"><a href="#7-混合器" class="headerlink" title="7.混合器"></a>7.混合器</h2><p>用 @mixin定义 用@ include使用</p>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> mymixin &#123;</span><br><span class="line">    <span class="attribute">color</span>:red;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">	<span class="keyword">@include</span> mymixin</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>当一个包含CSS规则的混合器通过过<code>@include</code>包含在一个父规则中时，在混合器中的规则最终会生成父规则中的嵌套规则@mi</p>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> mymixin &#123;</span><br><span class="line">    <span class="selector-tag">p</span>&#123;</span><br><span class="line">        <span class="attribute">color</span>: red;</span><br><span class="line">        <span class="selector-tag">a</span>&#123;</span><br><span class="line">            <span class="attribute">font-size</span>: <span class="number">20px</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">body&#123;</span><br><span class="line">  @include mymixin</span><br><span class="line">&#125;</span><br><span class="line">//会被解析为</span><br><span class="line">body p &#123;</span><br><span class="line">  color: red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">body</span> <span class="selector-tag">p</span> <span class="selector-tag">a</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>传参和默认值</p>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> link-colors(<span class="variable">$normal</span>:<span class="variable">$normal</span>, <span class="variable">$hover</span>, <span class="variable">$visited</span>) &#123;</span><br><span class="line">    <span class="comment">//默认值可以时指定的值，也可以是某个变量</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@include</span> link-colors(<span class="variable">$normal</span>:value, <span class="variable">$hover</span>:value, <span class="variable">$visited</span>:value) //这样写就知道每个参数对应的值</span><br></pre></td></tr></table></figure>
-<h2 id="6-选择器继承"><a href="#6-选择器继承" class="headerlink" title="6.选择器继承"></a>6.选择器继承</h2><p>@extend</p>
-<p>和原选择器有关的组合选择器都会以组合选择器的形式继承</p>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//.seriousError从.error继承样式</span></span><br><span class="line"><span class="selector-class">.error</span> <span class="selector-tag">a</span>&#123;  <span class="comment">//应用到.seriousError a</span></span><br><span class="line">  <span class="attribute">color</span>: red;</span><br><span class="line">  <span class="attribute">font-weight</span>: <span class="number">100</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">h1</span><span class="selector-class">.error</span> &#123; <span class="comment">//应用到hl.seriousError</span></span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">1.2rem</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="getChildren-el"><a href="#getChildren-el" class="headerlink" title="getChildren(el)"></a>getChildren(el)</h3><p>遍历每一个children并拼凑成合适的字符串</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> children = el.children;</span><br><span class="line"> <span class="keyword">if</span> (children) &#123;</span><br><span class="line">   <span class="keyword">return</span> children.map(<span class="function">(<span class="params">c</span>) =&gt;</span> generateChild(c)).join(<span class="string">&quot;,&quot;</span>);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="formatProps-attrs"><a href="#formatProps-attrs" class="headerlink" title="formatProps(attrs)"></a>formatProps(attrs)</h3><p>对属性处理</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> attrStr = <span class="string">&quot;&quot;</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; attrs.length; i++) &#123;</span><br><span class="line">    <span class="keyword">let</span> attr = attrs[i];</span><br><span class="line">    <span class="keyword">if</span> (attr.name === <span class="string">&quot;style&quot;</span>) &#123;</span><br><span class="line">      <span class="keyword">let</span> styleAttrs = &#123;&#125;;</span><br><span class="line">      attr.value.split(<span class="string">&quot;;&quot;</span>).map(<span class="function">(<span class="params">styleAttr</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> [key, value] = styleAttr.split(<span class="string">&quot;:&quot;</span>);</span><br><span class="line">        styleAttrs[key] = value;</span><br><span class="line">      &#125;);</span><br><span class="line">      attr.value = styleAttrs;</span><br><span class="line">    &#125;</span><br><span class="line">    attrStr += <span class="string">`<span class="subst">$&#123;attr.name&#125;</span>:<span class="subst">$&#123;<span class="built_in">JSON</span>.stringify(attr.value)&#125;</span>,`</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`&#123;<span class="subst">$&#123;attrStr.slice(<span class="number">0</span>, -<span class="number">1</span>)&#125;</span>&#125;`</span>;</span><br></pre></td></tr></table></figure>
+
+
+<p>下面的3个方法是挂载到Vue的原型上，所以在vm实例中是可以访问到的</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">_c()    创建标签节点</span><br><span class="line"></span><br><span class="line">_v()    创建文本节点</span><br><span class="line"></span><br><span class="line">_s()     当遇到&#123;&#123;&#125;&#125;时用 _s()包裹</span><br></pre></td></tr></table></figure>
+
+
+<p>生成的结果如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">_c(&#x27;div&#x27;,</span><br><span class="line">&#123;id:&quot;content&quot;&#125;,</span><br><span class="line">_c(&#x27;header&#x27;,</span><br><span class="line">    undefined,</span><br><span class="line">    _c(&#x27;div&#x27;,</span><br><span class="line">        &#123;class:&quot;btn-group&quot;,style:&#123;&quot;color&quot;:&quot; red&quot;,&quot; font-size&quot;:&quot; 15px&quot;&#125;&#125;,</span><br><span class="line">        _c(&#x27;button&#x27;,</span><br><span class="line">            &#123;class:&quot;.f-input&quot;&#125;),</span><br><span class="line">        _c(&#x27;button&#x27;,</span><br><span class="line">            &#123;class:&quot;.f-input&quot;&#125;)),</span><br><span class="line">     _c(&#x27;section&#x27;,undefined,_v(&quot;我是&quot;+_s(name)))),</span><br><span class="line">_c(&#x27;footer&#x27;,</span><br><span class="line">undefined))</span><br></pre></td></tr></table></figure>
+<p>这里为了好看，我做了换行处理，为的是看清楚谁是谁的儿子</p>
+<h3 id="render-1"><a href="#render-1" class="headerlink" title="render"></a>render</h3><p>将code包裹并返回一个函数–render函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Function</span>(</span><br><span class="line">              <span class="string">`with(this)&#123;</span></span><br><span class="line"><span class="string">              return <span class="subst">$&#123;code&#125;</span></span></span><br><span class="line"><span class="string">    		&#125;`</span></span><br><span class="line">   		 )</span><br></pre></td></tr></table></figure>
+<p>疑问一： 为什么要返回一个with包裹的this的函数 这里的this指向的是谁？</p>
+<p>答：this指的是当前的vm实例对象，用with包裹是因为不用使用this.xxx来调用，省去了重复书写this的麻烦</p>
+<p>new Function() 执行时会将字符串当作JS语句执行</p>
+<blockquote>
+<p>总结：文章内容对字符串的处理详细，在拼凑格式上有很高的要求，在正则表达式上需要很高的水准，在模板字符串的嵌套中嵌套模板字符串。上次写的计划，还是删了吧，我好像不是一个自律的人儿呢</p>
+</blockquote>
 
       
     </div>
@@ -487,9 +532,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Sass/" rel="tag"># Sass</a>
+            <a href="/tags/Vue/" rel="tag"># Vue</a>
           
-            <a href="/tags/CSS%E9%A2%84%E7%BC%96%E8%AF%91%E5%99%A8/" rel="tag"># CSS预编译器</a>
+            <a href="/tags/Vue%E6%A0%B8%E5%BF%83/" rel="tag"># Vue核心</a>
           
         </div>
       
@@ -502,8 +547,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2021/02/02/Vue%E6%A0%B8%E5%BF%83%E4%B9%8B%E8%99%9A%E6%8B%9FDOM%E4%B8%8EDiff%E7%AE%97%E6%B3%95/" rel="next" title="Vue核心之虚拟DOM与Diff算法">
-                <i class="fa fa-chevron-left"></i> Vue核心之虚拟DOM与Diff算法
+              <a href="/2021/02/05/Sass%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" rel="next" title="Sass的基本使用">
+                <i class="fa fa-chevron-left"></i> Sass的基本使用
               </a>
             
           </div>
@@ -511,10 +556,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2021/02/10/AST_render/" rel="prev" title="AST and Render">
-                AST and Render <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -666,7 +707,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8BSass"><span class="nav-number">1.</span> <span class="nav-text">快速上手Sass</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%8F%98%E9%87%8F"><span class="nav-number">1.1.</span> <span class="nav-text">1.变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E4%BD%9C%E7%94%A8%E5%9F%9F%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="nav-number">1.2.</span> <span class="nav-text">2.作用域的概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E4%B8%AD%E5%88%92%E7%BA%BF%E5%92%8C%E4%B8%8B%E5%88%92%E7%BA%BF"><span class="nav-number">1.3.</span> <span class="nav-text">3.中划线和下划线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E5%AF%BC%E5%85%A5"><span class="nav-number">1.4.</span> <span class="nav-text">5.导入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E6%B3%A8%E9%87%8A"><span class="nav-number">1.5.</span> <span class="nav-text">6.注释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-%E6%B7%B7%E5%90%88%E5%99%A8"><span class="nav-number">1.6.</span> <span class="nav-text">7.混合器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E9%80%89%E6%8B%A9%E5%99%A8%E7%BB%A7%E6%89%BF"><span class="nav-number">1.7.</span> <span class="nav-text">6.选择器继承</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#AST"><span class="nav-number">1.</span> <span class="nav-text">AST</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#parseHtmlToAST"><span class="nav-number">1.1.</span> <span class="nav-text">parseHtmlToAST</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#parseStartTag"><span class="nav-number">1.1.1.</span> <span class="nav-text">parseStartTag</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#start-tagName-attrs"><span class="nav-number">1.1.2.</span> <span class="nav-text">start(tagName, attrs)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#end-tagName"><span class="nav-number">1.1.3.</span> <span class="nav-text">end(tagName)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#chars-text"><span class="nav-number">1.1.4.</span> <span class="nav-text">chars(text)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#createASTElement-tagName-attrs"><span class="nav-number">1.1.5.</span> <span class="nav-text">createASTElement(tagName, attrs)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#advance-n"><span class="nav-number">1.1.6.</span> <span class="nav-text">advance(n)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#render"><span class="nav-number">2.</span> <span class="nav-text">render</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#code"><span class="nav-number">2.1.</span> <span class="nav-text">code</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#generate-el"><span class="nav-number">2.1.1.</span> <span class="nav-text">generate(el)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#generateChild-node"><span class="nav-number">2.1.2.</span> <span class="nav-text">generateChild(node)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#getChildren-el"><span class="nav-number">2.1.3.</span> <span class="nav-text">getChildren(el)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#formatProps-attrs"><span class="nav-number">2.1.4.</span> <span class="nav-text">formatProps(attrs)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#render-1"><span class="nav-number">2.1.5.</span> <span class="nav-text">render</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
