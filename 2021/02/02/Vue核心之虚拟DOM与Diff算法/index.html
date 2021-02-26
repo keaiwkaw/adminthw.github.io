@@ -90,16 +90,16 @@
 <meta property="og:site_name" content="甜小仙儿">
 <meta property="og:description" content="Vue核心之虚拟DOM与Diff算法概述 : 虚拟Dom就是用一个对象来模拟真实对象的结构。 diff算法来查找当前层级的节点有什么不同，查找出不同来更新他 虚拟DOM虚拟的DOM具备5个属性分别是：  sel 选择器 data 属性和key children 子节点 text 节点中的文字 elm 对应的真实DOM key 唯一的身份标识">
 <meta property="og:locale">
-<meta property="og:image" content="d:/GoogleDownload/patch.png">
-<meta property="og:image" content="d:/GoogleDownload/patchVnode.png">
-<meta property="og:image" content="d:/GoogleDownload/指针.png">
+<meta property="og:image" content="https://i.loli.net/2021/02/26/FX9c87DyYuaS5wW.png">
+<meta property="og:image" content="https://i.loli.net/2021/02/26/Y9VjLIFBcy52Nl4.png">
+<meta property="og:image" content="https://i.loli.net/2021/02/26/GtwhQ2b79rMI5P3.png">
 <meta property="article:published_time" content="2021-02-01T17:50:53.083Z">
-<meta property="article:modified_time" content="2021-02-01T18:04:13.823Z">
+<meta property="article:modified_time" content="2021-02-26T11:46:16.919Z">
 <meta property="article:author" content="甜小仙儿">
 <meta property="article:tag" content="Vue">
 <meta property="article:tag" content="Vue核心">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="d:/GoogleDownload/patch.png">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/26/FX9c87DyYuaS5wW.png">
 
 
 
@@ -481,11 +481,11 @@
 <p>所以如果节点的text有则直接赋值，</p>
 <p>如果有children就将children逐个遍历创建出真实的DOM再把子DOM追加到父DOM上，最后返回父DOM</p>
 <h3 id="patch"><a href="#patch" class="headerlink" title="patch"></a>patch</h3><p>接下来就是patch函数了，我画个流程图来说明下patch函数的执行过程</p>
-<p><img src="D:\GoogleDownload\patch.png" alt="patch"></p>
+<p><img src="https://i.loli.net/2021/02/26/FX9c87DyYuaS5wW.png" alt="patch"></p>
 <p>这里就不用我说什么了流程图很清楚，我也直接把代码贴上</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> createElement <span class="keyword">from</span> <span class="string">&quot;./createElement&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> vnode <span class="keyword">from</span> <span class="string">&quot;./vnode&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> patchVnode <span class="keyword">from</span> <span class="string">&quot;./patchVnode&quot;</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> (<span class="params">oldVnode, newVnode</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (oldVnode.sel == <span class="string">&quot;&quot;</span> || oldVnode.sel == <span class="literal">undefined</span>) &#123;</span><br><span class="line">    oldVnode = vnode(</span><br><span class="line">      oldVnode.tagName.toLowerCase(),</span><br><span class="line">      &#123;&#125;,</span><br><span class="line">      <span class="literal">undefined</span>,</span><br><span class="line">      <span class="literal">undefined</span>,</span><br><span class="line">      oldVnode</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (oldVnode.key == newVnode.key &amp;&amp; oldVnode.sel == newVnode.sel) &#123;</span><br><span class="line">    <span class="comment">//是同一个节点</span></span><br><span class="line">    patchVnode(oldVnode, newVnode);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> elm = createElement(newVnode);</span><br><span class="line">    <span class="keyword">if</span> (oldVnode.elm.parentNode &amp;&amp; elm) &#123;</span><br><span class="line">      oldVnode.elm.parentNode.insertBefore(elm, oldVnode.elm);</span><br><span class="line">    &#125;</span><br><span class="line">    oldVnode.elm.parentNode.removeChild(oldVnode.elm);</span><br><span class="line">    <span class="comment">//插入新的删除旧的</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="patchVnode"><a href="#patchVnode" class="headerlink" title="patchVnode"></a>patchVnode</h3><p>接下来就是patchVnode函数了，该函数就是细分diff算法的情况，我同样的画上一个流程图，帮助理解</p>
-<p><img src="D:\GoogleDownload\patchVnode.png" alt="patchVnode"></p>
+<p><img src="https://i.loli.net/2021/02/26/Y9VjLIFBcy52Nl4.png" alt="patchVnode"></p>
 <h3 id="updateChildren"><a href="#updateChildren" class="headerlink" title="updateChildren"></a>updateChildren</h3><p>这个函数可以说是整个Diff的核心了，他处理的就是当老节点有children时，新节点也有children，这就设计增加删除等操作，</p>
 <p>diff的核心就是同一节点不会重复创建，只会更新内容</p>
 <p>updateChildren严格按照 下面这个顺序</p>
@@ -500,7 +500,7 @@
 </li>
 </ol>
 <p>这新前旧前这些东西都是指针，如图</p>
-<p><img src="D:\GoogleDownload\指针.png" alt="指针"></p>
+<p><img src="https://i.loli.net/2021/02/26/GtwhQ2b79rMI5P3.png" alt="指针"></p>
 <p>接下来说几个重要的规则</p>
 <p>命中一个条件后，就不会再进去下一个条件，循环条件为<code>*newStartIdx* &lt;= newEndIdx &amp;&amp; oldStartIdx &lt;= oldEndIdx</code>,</p>
 <p>由于3，4命中条件后要对相关节点进行移动位置，所以当前位置是处理过的就要把他置为空，所以在进入循环前，要先判空，若为空，则指针移动</p>
@@ -649,7 +649,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -671,7 +671,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -756,7 +756,7 @@
     <div class="widget-wrap">
         <div id="myCanvasContainer" class="widget tagcloud">
         <canvas  id="resCanvas" style="width=100%">
-            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/" rel="tag">-Vue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS%E9%A2%84%E7%BC%96%E8%AF%91%E5%99%A8/" rel="tag">CSS预编译器</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS%E5%8A%9F%E8%83%BD%E5%87%BD%E6%95%B0/" rel="tag">JS功能函数</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS%E6%96%B9%E6%B3%95%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9E%E7%8E%B0/" rel="tag">JS方法函数的实现</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/" rel="tag">Sass</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/" rel="tag">Vue</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue%E6%A0%B8%E5%BF%83/" rel="tag">Vue核心</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/" rel="tag">webpack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" rel="tag">浏览器</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/" rel="tag">-Vue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS%E9%A2%84%E7%BC%96%E8%AF%91%E5%99%A8/" rel="tag">CSS预编译器</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS%E5%8A%9F%E8%83%BD%E5%87%BD%E6%95%B0/" rel="tag">JS功能函数</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS%E6%96%B9%E6%B3%95%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9E%E7%8E%B0/" rel="tag">JS方法函数的实现</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/" rel="tag">Sass</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/" rel="tag">TypeScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/" rel="tag">Vue</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue%E6%A0%B8%E5%BF%83/" rel="tag">Vue核心</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/" rel="tag">webpack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" rel="tag">浏览器</a><span class="tag-list-count">1</span></li></ul>
         </canvas>
         </div>
     </div>
@@ -785,7 +785,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">11.6k</span>
+    <span title="Site words total count">11.8k</span>
   
 </div>
 
