@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+  
+
+<link href="https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="算法,排序," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言：今天写了一道排序的题，发现排序算法我都不知道如何使用，在不同的情况下该使用哪种排序算法，惭愧的是，我只会冒泡排序，所以本文章作为我重新学习排序算法的一个见证吧，本篇文章将从时间空间复杂度，算法的优化以及各种算法的使用场景来介绍各种算法。 本篇文章基于升序讲述！  排序算法 这里有一个数据结构算法动画模拟网站，本篇文章图片资源来自算法与数据结构可视化动态演练平台 不过这个平台所能演示的算法并">
+<meta property="og:type" content="article">
+<meta property="og:title" content="10种排序算法">
+<meta property="og:url" content="http://tianhw.tk/2021/03/13/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:site_name" content="甜小仙儿">
+<meta property="og:description" content="前言：今天写了一道排序的题，发现排序算法我都不知道如何使用，在不同的情况下该使用哪种排序算法，惭愧的是，我只会冒泡排序，所以本文章作为我重新学习排序算法的一个见证吧，本篇文章将从时间空间复杂度，算法的优化以及各种算法的使用场景来介绍各种算法。 本篇文章基于升序讲述！  排序算法 这里有一个数据结构算法动画模拟网站，本篇文章图片资源来自算法与数据结构可视化动态演练平台 不过这个平台所能演示的算法并">
+<meta property="og:locale">
+<meta property="og:image" content="https://i.loli.net/2021/03/13/8uVamItrhFkZwYR.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/13/LwpTeKVFfzDMu9G.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/22/ue2swRKQaXBokId.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/22/MGz3VQjkfPuxUXC.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/21/t27PRTIzCKNArl3.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/21/8CwTDiou4FEBnxR.png">
+<meta property="og:image" content="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fwww.itxxb.com%2Fresource%2F20171206%2F1%2F20171206183742078_1.jpg&refer=http%3A%2F%2Fwww.itxxb.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1618997115&t=bfe3651c6e0facf156436be129c8a199">
+<meta property="og:image" content="https://i.loli.net/2021/03/22/Aav4PrYOdRJS1VM.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/22/UNrMvKGPpWy7Jhc.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/22/YJl4uNVtjm1C5SZ.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/22/fRAqewn1YrF38j2.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/31/5hwE27oDeqCpdic.png">
+<meta property="article:published_time" content="2021-03-13T08:36:41.442Z">
+<meta property="article:modified_time" content="2021-03-31T14:12:07.979Z">
+<meta property="article:author" content="甜小仙儿">
+<meta property="article:tag" content="算法">
+<meta property="article:tag" content="排序">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/03/13/8uVamItrhFkZwYR.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://tianhw.tk/2021/03/13/排序算法/"/>
+
+
+
+
+
+  <title>10种排序算法 | 甜小仙儿</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2b72124a8de95be5cf54e172ebae9fae";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">甜小仙儿</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不积小流，无以成江海</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://tianhw.tk/2021/03/13/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="甜小仙儿">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">10种排序算法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-03-13T16:36:41+08:00">
+                2021-03-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3.2k words
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  13  min
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>前言：今天写了一道排序的题，发现排序算法我都不知道如何使用，在不同的情况下该使用哪种排序算法，惭愧的是，我只会冒泡排序，所以本文章作为我重新学习排序算法的一个见证吧，本篇文章将从时间空间复杂度，算法的优化以及各种算法的使用场景来介绍各种算法。</p>
+<p>本篇文章基于升序讲述！</p>
+</blockquote>
+<p>排序算法</p>
+<p>这里有一个数据结构算法动画模拟网站，本篇文章图片资源来自<a target="_blank" rel="noopener" href="http://senki.tgozzz.cn/"><strong>算法与数据结构可视化动态演练平台</strong></a></p>
+<p>不过这个平台所能演示的算法并不是很多~</p>
+<h2 id="冒泡排序（Bubble-Sort）"><a href="#冒泡排序（Bubble-Sort）" class="headerlink" title="冒泡排序（Bubble Sort）"></a>冒泡排序（Bubble Sort）</h2><ol>
+<li>两两比较，将最大的置于最后面，然后排除最大的</li>
+<li>将剩余的重复①操作</li>
+</ol>
+<p><code>arr = [[5,35,43,15,30,24]]</code></p>
+<p><img src="https://i.loli.net/2021/03/13/8uVamItrhFkZwYR.png" alt="image-20210313170217246"></p>
+<p>一次下来将43排到最后面。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bubbleSort</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length-<span class="number">1</span>; i++) &#123; <span class="comment">//外层循环控制趟数</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; arr.length - <span class="number">1</span> - i; j++) &#123; <span class="comment">//内层循环控制两两前后比较</span></span><br><span class="line">      <span class="keyword">if</span> (arr[j] &gt; arr[j + <span class="number">1</span>]) &#123;</span><br><span class="line">        <span class="keyword">let</span> temp = arr[j + <span class="number">1</span>];</span><br><span class="line">        arr[j + <span class="number">1</span>] = arr[j];</span><br><span class="line">        arr[j] = temp;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> arr</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="优化1"><a href="#优化1" class="headerlink" title="优化1"></a>优化1</h3><p>现在有这么一个情况，如果给的数组本来就是有序数组，那我们上面的算法依然会傻傻的执行这2层循环。</p>
+<p>思考一下如果数组有序，那根本就走不进<code>if</code>语句,所以可以使用一个标识来表示数组是否有序</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bubbleSort</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length-<span class="number">1</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">let</span> sorted = <span class="literal">true</span>; <span class="comment">//有序标识</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; arr.length - <span class="number">1</span> - i; j++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (arr[j] &gt; arr[j + <span class="number">1</span>]) &#123;</span><br><span class="line">        <span class="keyword">let</span> temp = arr[j + <span class="number">1</span>];</span><br><span class="line">        arr[j + <span class="number">1</span>] = arr[j];</span><br><span class="line">        arr[j] = temp;</span><br><span class="line">        sorted = <span class="literal">false</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (sorted) &#123;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意看，这里的<code>sorted</code>标识我是写到了第一层循环里面第二层循环外面，为什么这样做呢？因为你跑了几趟之后突然发现数组有序了，所以这样的比较好！</p>
+<p>但是一般这种情况很少，而普遍的情况是数组的最后一部分有序，这就是我下来要介绍的优化2</p>
+<h3 id="优化2"><a href="#优化2" class="headerlink" title="优化2"></a>优化2</h3><p>当数组的最后一部分有序了，我还傻傻的让程序去两两比较已经有序的序列，为了让我的程序更加的聪明，我决定每次比较记录下最后一次交换的下标，我让趟数直接从我记录的下标结束，这样不就少了挺多趟了嘛？</p>
+<p><img src="https://i.loli.net/2021/03/13/LwpTeKVFfzDMu9G.png" alt="image-20210313182601083"></p>
+<p>最后一组交换17和51，我记录下17的下标4，将前面的当成子数组，我就只需要对子数组进行排序</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bubbleSort</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> end = arr.length - <span class="number">1</span>; end &gt; <span class="number">0</span>; end--)&#123;</span><br><span class="line">    <span class="keyword">let</span> index = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> begin = <span class="number">1</span>; begin &lt;= end; begin++)&#123;</span><br><span class="line">      <span class="keyword">if</span> (arr[begin - <span class="number">1</span>] &gt; arr[begin]) &#123;</span><br><span class="line">        <span class="keyword">let</span> temp = arr[begin - <span class="number">1</span>];</span><br><span class="line">        arr[begin - <span class="number">1</span>] = arr[begin];</span><br><span class="line">        arr[begin] = temp;</span><br><span class="line">        index = begin;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    end = index;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到我这里给<code>index</code>赋值为0我如果不这样写的话，如果数组是有序的,就还要走内层循环。这里理论上<code>index</code>可以赋值为小于2的数！</p>
+<p>冒泡排序是<strong>稳定</strong>的</p>
+<h2 id="选择排序（Selection-Sort）"><a href="#选择排序（Selection-Sort）" class="headerlink" title="选择排序（Selection Sort）"></a>选择排序（Selection Sort）</h2><p>选择排序就是在数组选择出最大（小）的放到数组的最前（后）面，同样的放好一个最后一个就不用管了，所以代码和冒泡的很像</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">selectionSort</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> end = arr.length - <span class="number">1</span>; end &gt; <span class="number">0</span>; end--) &#123;</span><br><span class="line">    <span class="keyword">let</span> maxIndex = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> begin = <span class="number">1</span>; begin &lt;= end; begin++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (arr[maxIndex] &lt;= arr[begin]) &#123;</span><br><span class="line">        maxIndex = begin;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> temp = arr[end];</span><br><span class="line">    arr[end] = arr[maxIndex];</span><br><span class="line">    arr[maxIndex] = temp;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>相较于冒泡选择好在哪?</p>
+<p>可以看到选择排序每一趟只交换一次，而冒泡两两比较只要符合条件就会交换！！！</p>
+<p>选择排序是<strong>不稳定</strong>的，虽然if里写了&lt;= 但他依然是不稳定的，只是增加了一些稳定的情况而已！</p>
+<p><strong>两个概念：</strong></p>
+<p><em>原地算法</em>：不依赖额外的资源或只依赖少数的资源</p>
+<p><em>稳定性</em>：相等元素的相对位置不变（3a, 4, 2, 3b, 5）=&gt;(2, 3a, 3b, 4, 5)</p>
+<h2 id="堆排序（Heap-Sort）"><a href="#堆排序（Heap-Sort）" class="headerlink" title="堆排序（Heap Sort）"></a>堆排序（Heap Sort）</h2><blockquote>
+<p>堆就是一种特殊的完全二叉树</p>
+<p>大根堆：任意节点都比其孩子节点大</p>
+<p>小根堆：任意节点都比其孩子节点小</p>
+</blockquote>
+<p>在介绍堆排序前，我先说几个概念：</p>
+<p>父节点为i求子节点</p>
+<p><em>左孩子</em>：<strong>2i+1</strong></p>
+<p><em>右孩子</em>：<strong>2i+2</strong></p>
+<p>子节点为i求父节点：</p>
+<p><strong>Math.floor((i-1)/2)</strong></p>
+<p>堆排序：</p>
+<ol>
+<li>建堆</li>
+<li>去堆顶，向下调整</li>
+<li>重复3，直到堆为空</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">heapSort</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> len = arr.length;</span><br><span class="line">  <span class="comment">//创建堆</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> n = <span class="built_in">Math</span>.floor((len - <span class="number">2</span>) / <span class="number">2</span>); n &gt; -<span class="number">1</span>; n--) &#123;</span><br><span class="line">    <span class="comment">//从最后一个非叶子节点开始</span></span><br><span class="line">    sift(arr, n, len - <span class="number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = len - <span class="number">1</span>; i &gt; -<span class="number">1</span>; i--) &#123;</span><br><span class="line">    <span class="keyword">let</span> temp = arr[<span class="number">0</span>];  </span><br><span class="line">    arr[<span class="number">0</span>] = arr[i];</span><br><span class="line">    arr[i] = temp;</span><br><span class="line">     <span class="comment">//将选出的最大数，放在已经处理过的位置</span></span><br><span class="line">    sift(arr, <span class="number">0</span>, i - <span class="number">1</span>);   </span><br><span class="line">    <span class="comment">//传入i-1是因为第i位已经不用管了</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sift</span>(<span class="params">arr, low, high</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> i = low,</span><br><span class="line">    j = <span class="number">2</span> * i + <span class="number">1</span>,</span><br><span class="line">    temp = arr[low];</span><br><span class="line">  <span class="keyword">while</span> (j &lt;= high) &#123;</span><br><span class="line">    <span class="keyword">if</span> (j + <span class="number">1</span> &lt; high &amp;&amp; arr[j + <span class="number">1</span>] &gt; arr[j]) &#123;</span><br><span class="line">      j = j + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (arr[j] &gt; temp) &#123;</span><br><span class="line">      arr[i] = arr[j];</span><br><span class="line">      i = j;</span><br><span class="line">      j = <span class="number">2</span> * i + <span class="number">1</span>;</span><br><span class="line">      <span class="comment">//这里 i j 分别指向当前层和下一层，当满足条件后，将值赋值后，将 i j 下移 </span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  arr[i] = temp;  <span class="comment">//无论是跳出循环或者是arr[i]比temp小，都要执行这句代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>下面用文字来描述下创建堆和向下调整的过程</p>
+<p><img src="https://i.loli.net/2021/03/22/ue2swRKQaXBokId.png" alt="image-20210322152712510"></p>
+<p>找到3这个节点后向下调整，依次是 -&gt;9-&gt; 1-&gt; 8-&gt; 6,向下调整的<code>low</code>好找，就是当前的节点序号，那么<code>high</code>应该写多少呢？上面代码中我直接写了<code>len-1</code>,因为在<code>sift</code>函数中<code>hight</code>只有限制边界这一个作用。所以len-1直接是够用了。</p>
+<p><strong>向下调整</strong></p>
+<p><img src="https://i.loli.net/2021/03/22/MGz3VQjkfPuxUXC.png" alt="image-20210322153739336"></p>
+<p>我把3放上去后，然后选出8，放到最上面，接着看 6 和5这一层选出6，接着选出4，最后3就只能呆在4这个位置。</p>
+<h2 id="插入排序（Insertion-Sort）"><a href="#插入排序（Insertion-Sort）" class="headerlink" title="插入排序（Insertion Sort）"></a>插入排序（Insertion Sort）</h2><p>遍历数组，如果当前数组元素比前面元素小，就把前面元素往后移然后将当前元素插入进去。</p>
+<p><img src="https://i.loli.net/2021/03/21/t27PRTIzCKNArl3.png" alt="image-20210321153546180"></p>
+<p>如图我判断到了<strong>34</strong>这个数，前面的数字都比<strong>34</strong>大，所以我将他们全部后移，这时<code>J == 0</code> 循环退出 ，我将<strong>34</strong>赋值给<code>J+1</code>位置的值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">insertionSort</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">    <span class="keyword">let</span> j = i - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">let</span> temp = arr[i];</span><br><span class="line">    <span class="keyword">while</span> (j &gt;= <span class="number">0</span> &amp;&amp; arr[j] &gt; temp) &#123; <span class="comment">//j&lt;0说明已经走到</span></span><br><span class="line">      <span class="built_in">console</span>.log(temp, arr[j]);</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="number">123</span>);</span><br><span class="line">      arr[j + <span class="number">1</span>] = arr[j];</span><br><span class="line">      j--;</span><br><span class="line">    &#125;</span><br><span class="line">    arr[j + <span class="number">1</span>] = temp;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="快速排序（Quick-Sort）"><a href="#快速排序（Quick-Sort）" class="headerlink" title="快速排序（Quick Sort）"></a>快速排序（Quick Sort）</h2><p>快速排序的思想是选出一个元素，比这个元素大的放右边，比这个元素小的放左边，</p>
+<p><strong>其实就是把基准元素归位的一个过程</strong>！</p>
+<p>放好之后，两边还有元素 (<strong>子数组</strong>) 就递归调用，一般的选取左边的元素为基准元素。</p>
+<p><img src="https://i.loli.net/2021/03/21/8CwTDiou4FEBnxR.png" alt="image-20210321164821359"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">quickSort</span>(<span class="params">arr, left, right</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (left &lt; right) &#123;</span><br><span class="line">    <span class="keyword">let</span> mid = partition(arr, left, right);</span><br><span class="line">    quickSort(arr, left, mid - <span class="number">1</span>);</span><br><span class="line">    quickSort(arr, mid + <span class="number">1</span>, right);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">partition</span>(<span class="params">arr, left, right</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> temp = arr[left];</span><br><span class="line">  <span class="keyword">while</span> (left &lt; right) &#123;</span><br><span class="line">    <span class="keyword">while</span> (left &lt; right &amp;&amp; arr[right] &gt;= temp) &#123;</span><br><span class="line">      right--;</span><br><span class="line">    &#125;</span><br><span class="line">    arr[left] = arr[right];   <span class="comment">//就算没上面的循环没有进入，赋值也就相当于 arr[left] = arr[left]</span></span><br><span class="line">    <span class="keyword">while</span> (left &lt; right &amp;&amp; arr[left] &lt;= temp) &#123;</span><br><span class="line">      left++;</span><br><span class="line">    &#125;</span><br><span class="line">    arr[right] = arr[left];</span><br><span class="line">  &#125;</span><br><span class="line">  arr[left] = temp;</span><br><span class="line">  <span class="keyword">return</span> left;   <span class="comment">//返回第一个数被插入的位置，把该位置当作左右递归的边界</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果left==right后就要结束循环，并且将最左边的值赋值给左右指针指向的位置（相当于把基准元素归位）</p>
+<h2 id="归并排序（Merge-Sort）"><a href="#归并排序（Merge-Sort）" class="headerlink" title="归并排序（Merge Sort）"></a>归并排序（Merge Sort）</h2><p>思想：两个有序序列合并成一个有序序列，就和当初学习两有序链表合并成一个链表一样！<br>把数组不停的对半分下去，当只有一个时，我merge两个只有一项的数组肯定行！</p>
+<p>所以归并排序说穿了就是先对半分，再依次合并的一个过程</p>
+<p><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fwww.itxxb.com%2Fresource%2F20171206%2F1%2F20171206183742078_1.jpg&refer=http%3A%2F%2Fwww.itxxb.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1618997115&t=bfe3651c6e0facf156436be129c8a199" alt="点击查看源网页"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">mergeSort</span>(<span class="params">arr, low, high</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (low &lt; high) &#123;</span><br><span class="line">    <span class="keyword">let</span> mid = <span class="built_in">Math</span>.floor((low + high) / <span class="number">2</span>);</span><br><span class="line">    mergeSort(arr, low, mid);</span><br><span class="line">    mergeSort(arr, mid + <span class="number">1</span>, high);</span><br><span class="line">    merge(arr, low, mid, high);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">merge</span>(<span class="params">arr, low, mid, high</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> i = low,</span><br><span class="line">    j = mid + <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">let</span> tempArr = [];</span><br><span class="line">  <span class="keyword">while</span> (i &lt;= mid &amp;&amp; j &lt;= high) &#123;</span><br><span class="line">    <span class="keyword">if</span> (arr[i] &lt; arr[j]) &#123;</span><br><span class="line">      tempArr.push(arr[i]);</span><br><span class="line">      i++;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      tempArr.push(arr[j]);</span><br><span class="line">      j++;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">while</span> (i &lt;= mid) &#123;</span><br><span class="line">    tempArr.push(arr[i]);</span><br><span class="line">    i++;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">while</span> (j &lt;= high) &#123;</span><br><span class="line">    tempArr.push(arr[j]);</span><br><span class="line">    j++;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = low, j = <span class="number">0</span>; i &lt;= high; i++, j++) &#123;</span><br><span class="line">    arr[i] = tempArr[j];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如上面的图，<code>mid</code>指的就是7这个位置</p>
+<h2 id="希尔排序（Shell-Sort）"><a href="#希尔排序（Shell-Sort）" class="headerlink" title="希尔排序（Shell Sort）"></a>希尔排序（Shell Sort）</h2><p>希尔排序就是分组的插入排序？那怎么分组呢？第一组d1 = n/2 第二组 d2 = d1/2…. 直到d==1</p>
+<p><img src="https://i.loli.net/2021/03/22/Aav4PrYOdRJS1VM.png" alt="image-20210322181322167"></p>
+<p><img src="https://i.loli.net/2021/03/22/UNrMvKGPpWy7Jhc.png" alt="image-20210322181344171"></p>
+<p><img src="https://i.loli.net/2021/03/22/YJl4uNVtjm1C5SZ.png" alt="image-20210322181359801"></p>
+<p>希尔排序就是慢慢的将数组变有序的排序方式！</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">insertSort_gap</span>(<span class="params">arr, gap</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = gap; i &lt; arr.length; i++) &#123;</span><br><span class="line">    <span class="keyword">let</span> j = i - gap;</span><br><span class="line">    <span class="keyword">let</span> temp = arr[i];</span><br><span class="line">    <span class="keyword">while</span> (j &gt;= <span class="number">0</span> &amp;&amp; arr[j] &gt; temp) &#123;</span><br><span class="line">      arr[j + gap] = arr[j];</span><br><span class="line">      j -= gap;</span><br><span class="line">    &#125;</span><br><span class="line">    arr[j + gap] = temp;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">shellSort</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> d = <span class="built_in">Math</span>.floor(arr.length / <span class="number">2</span>);</span><br><span class="line">  <span class="keyword">while</span> (d &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    insertSort_gap(arr, d);</span><br><span class="line">    d = <span class="built_in">Math</span>.floor(d / <span class="number">2</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="计数排序（Count-Sort）"><a href="#计数排序（Count-Sort）" class="headerlink" title="计数排序（Count Sort）"></a>计数排序（Count Sort）</h2><p>前提：<strong>知道要被排序数的范围</strong></p>
+<p>遍历数组，数字每出现一次就加1,接着根据次数输出对应的数就好！</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">countSort</span>(<span class="params">arr, maxCount = <span class="number">10</span></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> count = <span class="keyword">new</span> <span class="built_in">Array</span>(maxCount).fill(<span class="number">0</span>);</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">    <span class="keyword">let</span> index = arr[i]</span><br><span class="line">    count[index] =count[index]+<span class="number">1</span> ;</span><br><span class="line">  &#125;</span><br><span class="line">  arr = [];</span><br><span class="line">  <span class="keyword">let</span> i;</span><br><span class="line">  <span class="keyword">for</span> ( i = <span class="number">0</span>; i &lt; count.length; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (count[i]!==<span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">let</span> j = count[i];</span><br><span class="line">      <span class="keyword">while</span> (j &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        arr.push(i);</span><br><span class="line">        j--;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="桶排序（Bucket-Sort）"><a href="#桶排序（Bucket-Sort）" class="headerlink" title="桶排序（Bucket Sort）"></a>桶排序（Bucket Sort）</h2><p>试想一下，如果只有10个数字需要排序，但这10个数字最大的是10000，采用计数排序的话，我就需要一个长度为10000的数组。</p>
+<p>桶排序就是把这个超长的范围划分出几个小段，把对应的数放在对应的段里</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bucketSort</span>(<span class="params">arr, n = <span class="number">10</span>, maxNum = <span class="number">100</span></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> buckets = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">    <span class="keyword">let</span> tArr = [];</span><br><span class="line">    buckets.push(tArr);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">    <span class="keyword">let</span> index = <span class="built_in">Math</span>.min(<span class="built_in">Math</span>.floor(arr[i] / <span class="built_in">Math</span>.floor(maxNum / n)), n - <span class="number">1</span>);</span><br><span class="line">    buckets[index].push(arr[i]);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = buckets[index].length - <span class="number">1</span>; j &gt; <span class="number">0</span>; j--) &#123;</span><br><span class="line">      <span class="keyword">if</span> (buckets[index][j] &lt; buckets[index][j - <span class="number">1</span>]) &#123;</span><br><span class="line">        <span class="keyword">let</span> temp = buckets[index][j];</span><br><span class="line">        buckets[index][j] = buckets[index][j - <span class="number">1</span>];</span><br><span class="line">        buckets[index][j - <span class="number">1</span>] = temp;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  arr = [];</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; buckets.length; i++) &#123;</span><br><span class="line">    arr = arr.concat(...buckets[i]);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在给桶里添加数据的时候，像冒泡排序一样，把新的数插在合适的位置。这样排序后的数组就只需要顺序输出就好了</p>
+<p><img src="https://i.loli.net/2021/03/22/fRAqewn1YrF38j2.png" alt="image-20210322204029891"></p>
+<h2 id="基数排序（Radix-Sort）"><a href="#基数排序（Radix-Sort）" class="headerlink" title="基数排序（Radix Sort）"></a>基数排序（Radix Sort）</h2><p>思想：从每个数的个位开始，根据个位的数字，放到对应的桶里（个位是1就放到1号桶里），然后从桶中一次把数字取出赋给原数组。</p>
+<p>接下来10位、百位…</p>
+<p><strong>该方法循环最大数字的位数！</strong></p>
+<p>这里拿出一个数组：[12，22，43，32，26，45]</p>
+<p>由于我给出的数字在1- 6之间，为了画图方便，我给出6个桶，执行次数及结果如下图所示：</p>
+<p><img src="https://i.loli.net/2021/03/31/5hwE27oDeqCpdic.png" alt="image-20210331213729527"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">radixSort</span>(<span class="params">li</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> max_num = <span class="built_in">Math</span>.max(...li);</span><br><span class="line">  <span class="keyword">let</span> it = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span> (<span class="number">10</span> ** it &lt;= max_num) &#123;</span><br><span class="line">    <span class="keyword">let</span> buckets = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">10</span>);  <span class="comment">//只有10个数字所以创建10个桶</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; buckets.length; i++) &#123;</span><br><span class="line">      <span class="keyword">let</span> arr = [];</span><br><span class="line">      buckets[i] = arr;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; li.length; i++) &#123;</span><br><span class="line">      <span class="keyword">let</span> digit = <span class="built_in">Math</span>.floor(li[i] / <span class="number">10</span> ** it) % <span class="number">10</span>;  <span class="comment">//第一次循环取个位，第二次取10位...</span></span><br><span class="line">      buckets[digit].push(li[i]);  <span class="comment">//将对应的数字放到对应的桶里</span></span><br><span class="line">    &#125;</span><br><span class="line">    li = [];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; buckets.length; i++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (buckets[i].length !== <span class="number">0</span>) &#123;</span><br><span class="line">        li = li.concat(buckets[i]);   <span class="comment">//顺序取出桶中的数字并赋值给原数组</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    it++;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> li</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>问题：</p>
+<ol>
+<li>为什么这样的操作后数组就变得有序呢？因为桶是有序的</li>
+<li>如果给出的数字位数不一样会有影响吗?  没有影响当it值大于的话，那些小的数字就会被排到0号桶里完全是没有影响的</li>
+</ol>
+<h2 id="时间空间复杂度："><a href="#时间空间复杂度：" class="headerlink" title="时间空间复杂度："></a>时间空间复杂度：</h2><table>
+<thead>
+<tr>
+<th align="center">名称</th>
+<th align="center">时间复杂度</th>
+<th align="center">空间复杂度</th>
+<th align="center">稳定性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">冒泡</td>
+<td align="center">n<sup>2</sup></td>
+<td align="center">1</td>
+<td align="center">稳定</td>
+</tr>
+<tr>
+<td align="center">选择</td>
+<td align="center">n<sup>2</sup></td>
+<td align="center">1</td>
+<td align="center">不稳定</td>
+</tr>
+<tr>
+<td align="center">插入</td>
+<td align="center">n<sup>2</sup></td>
+<td align="center">1</td>
+<td align="center">稳</td>
+</tr>
+<tr>
+<td align="center">堆</td>
+<td align="center">nlog<sub>2</sub>n</td>
+<td align="center">1</td>
+<td align="center">不稳</td>
+</tr>
+<tr>
+<td align="center">快速</td>
+<td align="center">nlog<sub>2</sub>n</td>
+<td align="center">log<sub>2</sub>n</td>
+<td align="center">不稳</td>
+</tr>
+<tr>
+<td align="center">归并</td>
+<td align="center">nlog<sub>2</sub>n</td>
+<td align="center">n</td>
+<td align="center">稳</td>
+</tr>
+<tr>
+<td align="center">希尔</td>
+<td align="center">n<sup>1.3</sup></td>
+<td align="center">1</td>
+<td align="center">不稳</td>
+</tr>
+<tr>
+<td align="center">计数</td>
+<td align="center">n+k</td>
+<td align="center">n+k</td>
+<td align="center">稳</td>
+</tr>
+<tr>
+<td align="center">桶</td>
+<td align="center">n+k</td>
+<td align="center">n+k</td>
+<td align="center">稳</td>
+</tr>
+<tr>
+<td align="center">基数</td>
+<td align="center">n*k</td>
+<td align="center">n+k</td>
+<td align="center">稳</td>
+</tr>
+</tbody></table>
+<p>关于稳定性的判断：凡是跳着交换的都是不稳定的，挨着交换的就是稳定的</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"># 算法</a>
+          
+            <a href="/tags/%E6%8E%92%E5%BA%8F/" rel="tag"># 排序</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/03/09/Vue%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%9001-%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8/" rel="next" title="Vue源码解析01-数据驱动">
+                <i class="fa fa-chevron-left"></i> Vue源码解析01-数据驱动
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/03/20/%E5%8E%9F%E7%94%9Fnodejs%E5%B0%81%E8%A3%85express%E8%B7%AF%E7%94%B1/" rel="prev" title="原生nodejs封装express路由">
+                原生nodejs封装express路由 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/head.jpg"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/adminthw" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:lrw154589317@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F%EF%BC%88Bubble-Sort%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">冒泡排序（Bubble Sort）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E5%8C%961"><span class="nav-number">1.1.</span> <span class="nav-text">优化1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E5%8C%962"><span class="nav-number">1.2.</span> <span class="nav-text">优化2</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F%EF%BC%88Selection-Sort%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">选择排序（Selection Sort）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A0%86%E6%8E%92%E5%BA%8F%EF%BC%88Heap-Sort%EF%BC%89"><span class="nav-number">3.</span> <span class="nav-text">堆排序（Heap Sort）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F%EF%BC%88Insertion-Sort%EF%BC%89"><span class="nav-number">4.</span> <span class="nav-text">插入排序（Insertion Sort）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%EF%BC%88Quick-Sort%EF%BC%89"><span class="nav-number">5.</span> <span class="nav-text">快速排序（Quick Sort）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%EF%BC%88Merge-Sort%EF%BC%89"><span class="nav-number">6.</span> <span class="nav-text">归并排序（Merge Sort）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F%EF%BC%88Shell-Sort%EF%BC%89"><span class="nav-number">7.</span> <span class="nav-text">希尔排序（Shell Sort）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F%EF%BC%88Count-Sort%EF%BC%89"><span class="nav-number">8.</span> <span class="nav-text">计数排序（Count Sort）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A1%B6%E6%8E%92%E5%BA%8F%EF%BC%88Bucket-Sort%EF%BC%89"><span class="nav-number">9.</span> <span class="nav-text">桶排序（Bucket Sort）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F%EF%BC%88Radix-Sort%EF%BC%89"><span class="nav-number">10.</span> <span class="nav-text">基数排序（Radix Sort）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%B6%E9%97%B4%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%EF%BC%9A"><span class="nav-number">11.</span> <span class="nav-text">时间空间复杂度：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+    </div>
+
+<div class="card-announcement">
+    <div class="card-content">
+        <div class="item_headline">
+        <i class="fa fa-bullhorn card-announcement-animation" aria-hidden="true"></i>
+        <span>公告</span>
+    </div>
+        <div class="announcement_content">
+        谢谢你这么帅，这么漂亮还来看我的博客，如果喜欢的话记得收藏哦
+        </div>
+    </div>
+</div>
+
+
+
+<div class="sidebar-tags">
+    <div class="item_headline">
+    <i class="fa fa-tags" aria-hidden="true"></i>
+    <span>标签云</span>
+    </div>
+    
+    <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+    <div class="widget-wrap">
+        <div id="myCanvasContainer" class="widget tagcloud">
+        <canvas  id="resCanvas" style="width=100%">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/" rel="tag">-Vue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS%E9%A2%84%E7%BC%96%E8%AF%91%E5%99%A8/" rel="tag">CSS预编译器</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS%E5%8A%9F%E8%83%BD%E5%87%BD%E6%95%B0/" rel="tag">JS功能函数</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS%E6%96%B9%E6%B3%95%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9E%E7%8E%B0/" rel="tag">JS方法函数的实现</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/" rel="tag">Sass</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/" rel="tag">TypeScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/" rel="tag">Vue</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue%E6%A0%B8%E5%BF%83/" rel="tag">Vue核心</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/" rel="tag">nodejs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/" rel="tag">webpack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F/" rel="tag">排序</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" rel="tag">浏览器</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a><span class="tag-list-count">2</span></li></ul>
+        </canvas>
+        </div>
+    </div>
+    
+</div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">甜小仙儿</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">19.2k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/velocity/1.2.1/velocity.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/velocity/1.2.1/velocity.ui.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/three.js/r83/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/vendors/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/vendors/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/vendors/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right top","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
