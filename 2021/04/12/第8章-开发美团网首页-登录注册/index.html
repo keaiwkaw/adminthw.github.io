@@ -83,15 +83,15 @@
 
 
 
-<meta name="description" content="第8章-开发美团网首页-登录注册注册代码也比较好读懂，我画了一半的流程图，觉得没必要画完。我在这里简单的说一下  查看验证码是否有效  验证码不正确 验证码没有填写 验证码过期（结束）   用户是否在数据库中存在  存在（结束） 不存在 写入数据库 写入失败（结束） 写入成功并登录 登录失败（结束） 登录成功        1234567891011121314151617181920212223">
+<meta name="description" content="第8章-开发美团网首页-登录注册注册代码都比较好读懂，没有什么特别高深的东西哦~ 如果非要说比较难看懂的代码的话，那就是包里自带的方法了，我名字都看不懂哈哈，外国人写包的时候能不能搞个中文拼音版的哈哈， 我画了一半的流程图，觉得没必要画完。完全没必要，就是一些条件判断罢了。我在这里简单的说一下  查看验证码是否有效  验证码不正确 验证码没有填写 验证码过期（结束）   用户是否在数据库中存在">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第8章-开发美团网首页-登录注册">
 <meta property="og:url" content="http://tianhw.tk/2021/04/12/%E7%AC%AC8%E7%AB%A0-%E5%BC%80%E5%8F%91%E7%BE%8E%E5%9B%A2%E7%BD%91%E9%A6%96%E9%A1%B5-%E7%99%BB%E5%BD%95%E6%B3%A8%E5%86%8C/index.html">
 <meta property="og:site_name" content="甜小仙儿">
-<meta property="og:description" content="第8章-开发美团网首页-登录注册注册代码也比较好读懂，我画了一半的流程图，觉得没必要画完。我在这里简单的说一下  查看验证码是否有效  验证码不正确 验证码没有填写 验证码过期（结束）   用户是否在数据库中存在  存在（结束） 不存在 写入数据库 写入失败（结束） 写入成功并登录 登录失败（结束） 登录成功        1234567891011121314151617181920212223">
+<meta property="og:description" content="第8章-开发美团网首页-登录注册注册代码都比较好读懂，没有什么特别高深的东西哦~ 如果非要说比较难看懂的代码的话，那就是包里自带的方法了，我名字都看不懂哈哈，外国人写包的时候能不能搞个中文拼音版的哈哈， 我画了一半的流程图，觉得没必要画完。完全没必要，就是一些条件判断罢了。我在这里简单的说一下  查看验证码是否有效  验证码不正确 验证码没有填写 验证码过期（结束）   用户是否在数据库中存在">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-04-12T13:03:52.597Z">
-<meta property="article:modified_time" content="2021-04-12T13:03:52.598Z">
+<meta property="article:modified_time" content="2021-04-12T13:34:29.160Z">
 <meta property="article:author" content="甜小仙儿">
 <meta property="article:tag" content="-美团全栈项目">
 <meta name="twitter:card" content="summary">
@@ -376,7 +376,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  904 words
+                  987 words
                 </span>
               
 
@@ -413,7 +413,9 @@
       
 
       
-        <h2 id="第8章-开发美团网首页-登录注册"><a href="#第8章-开发美团网首页-登录注册" class="headerlink" title="第8章-开发美团网首页-登录注册"></a>第8章-开发美团网首页-登录注册</h2><h3 id="注册"><a href="#注册" class="headerlink" title="注册"></a>注册</h3><p>代码也比较好读懂，我画了一半的流程图，觉得没必要画完。我在这里简单的说一下</p>
+        <h2 id="第8章-开发美团网首页-登录注册"><a href="#第8章-开发美团网首页-登录注册" class="headerlink" title="第8章-开发美团网首页-登录注册"></a>第8章-开发美团网首页-登录注册</h2><h2 id="注册"><a href="#注册" class="headerlink" title="注册"></a>注册</h2><p>代码都比较好读懂，没有什么特别高深的东西哦~</p>
+<p>如果非要说比较难看懂的代码的话，那就是包里自带的方法了，我名字都看不懂哈哈，外国人写包的时候能不能搞个<strong>中文拼音版</strong>的哈哈，</p>
+<p>我画了一半的流程图，觉得没必要画完。完全没必要，就是一些条件判断罢了。我在这里简单的说一下</p>
 <ol>
 <li><p>查看验证码是否有效</p>
 <ol>
@@ -443,9 +445,9 @@
 
 </li>
 </ol>
-<h3 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h3><p>登录接口的回调函数返回了<code>Passport.authenticate()</code>方法的执行结果这里算是个固定的写法，我就不再赘述了，参考代码</p>
+<h2 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h2><p>登录接口的回调函数返回了<code>Passport.authenticate()</code>方法的执行结果这里算是个固定的写法，我就不再赘述了，参考代码</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">router.post(<span class="string">&quot;/singin&quot;</span>, <span class="keyword">async</span> (ctx, next) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> Passport.authenticate(<span class="string">&quot;local&quot;</span>, <span class="function">(<span class="params">err, user, inf, status</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (err) &#123;</span><br><span class="line">      ctx.body = &#123;</span><br><span class="line">        code: -<span class="number">1</span>,</span><br><span class="line">        msg: err</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (user) &#123;</span><br><span class="line">        ctx.body = &#123;</span><br><span class="line">          code: <span class="number">0</span>,</span><br><span class="line">          msg: <span class="string">&quot;登陆成功&quot;</span>,</span><br><span class="line">          user</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="keyword">return</span> ctx.login(user);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        ctx.body = &#123;</span><br><span class="line">          code: -<span class="number">1</span>,</span><br><span class="line">          msg: inf</span><br><span class="line">        &#125;;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)(ctx, next);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h3 id="发送验证码"><a href="#发送验证码" class="headerlink" title="发送验证码"></a>发送验证码</h3><p>大概流程</p>
+<h2 id="发送验证码"><a href="#发送验证码" class="headerlink" title="发送验证码"></a>发送验证码</h2><p>大概流程</p>
 <ol>
 <li>检查数据库（redis）中是否存了该昵称下的到期时间<ol>
 <li>存在并且现在的时间和注册的时间差小于1分钟（结束）</li>
@@ -461,7 +463,7 @@
 </li>
 <li>响应成功报文</li>
 </ol>
-<h3 id="退出"><a href="#退出" class="headerlink" title="退出"></a>退出</h3><p><code>ctx.isAuthenticated()</code>这个是就有的方法</p>
+<h2 id="退出"><a href="#退出" class="headerlink" title="退出"></a>退出</h2><p><code>ctx.isAuthenticated()</code>这个是就有的方法</p>
 <ol>
 <li>等待<code>ctx.lagout()</code></li>
 <li><em>ctx</em>.isAuthenticated()是否成功<ol>
@@ -471,7 +473,7 @@
 </li>
 </ol>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">router.get(<span class="string">&quot;/exit&quot;</span>, <span class="keyword">async</span> (ctx, next) =&gt; &#123;</span><br><span class="line">  <span class="keyword">await</span> ctx.logout();</span><br><span class="line">  <span class="keyword">if</span> (!ctx.isAuthenticated()) &#123;</span><br><span class="line">    ctx.body = &#123;</span><br><span class="line">      code: <span class="number">0</span></span><br><span class="line">    &#125;;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    ctx.body = &#123;</span><br><span class="line">      code: -<span class="number">1</span></span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h3 id="获取用户信息"><a href="#获取用户信息" class="headerlink" title="获取用户信息"></a>获取用户信息</h3><ol>
+<h2 id="获取用户信息"><a href="#获取用户信息" class="headerlink" title="获取用户信息"></a>获取用户信息</h2><ol>
 <li><code>ctx.isAuthenticated()</code>是否有<ol>
 <li>没有，返回空邮箱和空用户名</li>
 <li>有，返回邮箱和用户名’</li>
@@ -680,7 +682,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC8%E7%AB%A0-%E5%BC%80%E5%8F%91%E7%BE%8E%E5%9B%A2%E7%BD%91%E9%A6%96%E9%A1%B5-%E7%99%BB%E5%BD%95%E6%B3%A8%E5%86%8C"><span class="nav-number">1.</span> <span class="nav-text">第8章-开发美团网首页-登录注册</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E5%86%8C"><span class="nav-number">1.1.</span> <span class="nav-text">注册</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%99%BB%E5%BD%95"><span class="nav-number">1.2.</span> <span class="nav-text">登录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%91%E9%80%81%E9%AA%8C%E8%AF%81%E7%A0%81"><span class="nav-number">1.3.</span> <span class="nav-text">发送验证码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%80%E5%87%BA"><span class="nav-number">1.4.</span> <span class="nav-text">退出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF"><span class="nav-number">1.5.</span> <span class="nav-text">获取用户信息</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC8%E7%AB%A0-%E5%BC%80%E5%8F%91%E7%BE%8E%E5%9B%A2%E7%BD%91%E9%A6%96%E9%A1%B5-%E7%99%BB%E5%BD%95%E6%B3%A8%E5%86%8C"><span class="nav-number">1.</span> <span class="nav-text">第8章-开发美团网首页-登录注册</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8%E5%86%8C"><span class="nav-number">2.</span> <span class="nav-text">注册</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%99%BB%E5%BD%95"><span class="nav-number">3.</span> <span class="nav-text">登录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%91%E9%80%81%E9%AA%8C%E8%AF%81%E7%A0%81"><span class="nav-number">4.</span> <span class="nav-text">发送验证码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%80%E5%87%BA"><span class="nav-number">5.</span> <span class="nav-text">退出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF"><span class="nav-number">6.</span> <span class="nav-text">获取用户信息</span></a></li></ol></div>
             
 
           </div>
@@ -745,7 +747,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">20.2k</span>
+    <span title="Site words total count">20.3k</span>
   
 </div>
 
