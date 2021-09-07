@@ -1264,4 +1264,103 @@
         <tag>-修手机</tag>
       </tags>
   </entry>
+  <entry>
+    <title>浅谈WebRTC</title>
+    <url>/2021/09/07/%E6%B5%85%E8%B0%88WebRTC/</url>
+    <content><![CDATA[<h1 id="浅谈WebRTC"><a href="#浅谈WebRTC" class="headerlink" title="浅谈WebRTC"></a>浅谈WebRTC</h1><h2 id="什么是webRTC"><a href="#什么是webRTC" class="headerlink" title="什么是webRTC"></a>什么是webRTC</h2><p>维基百科是这样定义的：<strong>WebRTC</strong>，名称源自<strong>网页即时通信</strong>（英语：Web Real-Time Communication）的缩写，是一个支持<a href="https://zh.wikipedia.org/wiki/%E7%B6%B2%E9%A0%81%E7%80%8F%E8%A6%BD%E5%99%A8">网页浏览器</a>进行实时语音对话或视频对话的<a href="https://zh.wikipedia.org/wiki/API">API</a>。简单来说就是网页用来<strong>音视频通话</strong>的。</p>
+<p>完成音视频需要4个模块：</p>
+<h2 id="本地媒体流的采集"><a href="#本地媒体流的采集" class="headerlink" title="本地媒体流的采集"></a>本地媒体流的采集</h2><p><strong>getUserMedia</strong></p>
+<p>使用<code> navigator.mediaDevices.getUserMedia( constraints );</code>获取本地的媒体流。<strong>constraints</strong>指定了请求的媒体类型和参数</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>width</td>
+<td>视频宽</td>
+</tr>
+<tr>
+<td>height</td>
+<td>视频高</td>
+</tr>
+<tr>
+<td>facingMode（user,environment）</td>
+<td>镜像模式</td>
+</tr>
+<tr>
+<td>aspectRatio</td>
+<td>比例</td>
+</tr>
+<tr>
+<td>frameRate</td>
+<td>帧率</td>
+</tr>
+<tr>
+<td>resizeMode</td>
+<td>大小模式</td>
+</tr>
+</tbody></table>
+<p>像width/height等可以用普通的关键字也可以用ideal,min,max,exact修饰，其中exact表示的是很确认的即一定意思。</p>
+<h2 id="STUN-TURN-服务器"><a href="#STUN-TURN-服务器" class="headerlink" title="STUN/TURN 服务器"></a>STUN/TURN 服务器</h2><p>ICE集成了多种NAT（网络地址转化）穿越技术比如STUN、TURN。</p>
+<p>在介绍STUN/TURN之前先说下NAT</p>
+<p>NAT常常部署在私网到公网的路由出口，死亡设备通过NAT将内网转化为公网加入互联网</p>
+<p><img src="https://i.loli.net/2021/09/07/7XLuiYSyBGCxDj8.png" alt="未命名文件 (7)"></p>
+<p><strong>STUN</strong>允许唯一NAT的客户端找出自己的公网地址。</p>
+<p>STUN是C/S模式的协议，客户端发送STUN请求，STUN服务响应告知由NAT分配给主机的IP地址和端口号。所以就需要先在公网上架设一台STUN服务器，像STUN服务器发送请求就能拿到公网IP</p>
+<p><strong>TURN</strong>是一种数据传输协议。允许通过TCP或UDP方式穿透NAT或防火墙。</p>
+<p>STUN和TRURN都是通过公网IP地址达到NAT穿透</p>
+<h2 id="信令服务器"><a href="#信令服务器" class="headerlink" title="信令服务器"></a>信令服务器</h2><p>因为WebRTC的SDP和和ICE要通过服务器来传到另一个客户端上，因为SDP和ICE这些东西我们将他叫做信令，所以传输信令的服务器我们就将其称作是<strong>信令服务器</strong>了，一般利用WebSocket的实时通信能力搭建信令服务器。</p>
+<p>SDP（Session Description Protocol）会话描述协议：包括浏览器所支持的编码格式以及ICE代理、MediaStreamTrack等信息</p>
+<p>SPD协议结构 : &lt;type&gt; = &lt;value&gt;</p>
+<h2 id="端与端之间P2P连接"><a href="#端与端之间P2P连接" class="headerlink" title="端与端之间P2P连接"></a>端与端之间P2P连接</h2><p>创建了本地的媒体流怎么把本地的媒体流和另一个客户端上的媒体流连接起来呢？</p>
+<p>所以WebRTC的灵魂就是这个了<strong>peerConnection</strong>。记住了<strong>P2P全靠它</strong></p>
+<p><code>pc = new RTCPeerConnection(pcConfig)</code>，好了有pc了，怎么连接呢？</p>
+<p>分两步：</p>
+<ol>
+<li>发送端先调用createOffer创建（SDP Offer）</li>
+<li>通过setLocalDescription将（SDP Offer）加入到pc中：将会话信息传递到CIE曾</li>
+</ol>
+<p><strong>addIceCandidate</strong>添加ICE代理</p>
+<p>其实我这里大概写了一下创建P2P信息的基本流程，但是写的不清不楚，所以我先总结一下到了最后再详细的写一下创建链接的步骤。</p>
+<p>总体来说：A端将自己的candidate offer 存到了B端的PC中，B端也将自己的candidate，answer存到了A端的PC中，交换完成之后AB中都有了双方SDP，这样他们可以选择他们相同的编码等，收集的ICE完成连通性检测后，P2P链接就建立成功了。</p>
+<p><strong>P2P建立链接过程</strong></p>
+<ol>
+<li><p> AB 创建本地媒体流 （假设 A 是发送方，B 是接收方，客户端简称为 C 端，服务端简称为 S）</p>
+</li>
+<li><p> AB peer = new RTCPeerConnection</p>
+</li>
+<li><p>监听 peer 的事件</p>
+<ol>
+<li> onicecandidate 如果本地代理 SDP Offer 并调用后，将 candidate 发送给对方</li>
+<li>onaddstream 如果有视频流就拿到视频流</li>
+</ol>
+</li>
+<li><p> 将本地视频流添加到 peer 中</p>
+</li>
+<li><p> A 创建 offerA 并加入到 peerA 里</p>
+</li>
+<li><p> AC setLocalDescription 后会触发 onicecandidate</p>
+</li>
+<li><p> AC 触发 onicecandidate S 就会收到来自 AC 的 candidate</p>
+</li>
+<li><p> S 将 AC 的 candidate 转发到 BC, BC 将 candidate 存入到 peerB 中</p>
+</li>
+<li><p> AC 将 OfferA 发送给 BC</p>
+</li>
+<li><p> BC 接收到 offerA 后，将 offerA 存入到 peerB 中</p>
+</li>
+</ol>
+<p>  <strong><em>**</em></strong>上面的过程后 AB 将会建立好连接，然后 A B 监听的 onaddstream 事件就会有 stream 流入*<strong>*<em>\</em></strong></p>
+<p>参考文章[<a href="https://juejin.cn/post/7000205126719766565#heading-9">浅聊WebRTC视频通话 - 掘金 (juejin.cn)</a>]</p>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>WebRTC</tag>
+      </tags>
+  </entry>
 </search>
